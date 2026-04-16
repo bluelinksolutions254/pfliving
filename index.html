@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>PF Place | Blue Haven Senior Living — Hampton, VA</title>
-  <!-- Google Fonts: Playfair Display (elegant headings) + Inter (clean body) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -46,7 +46,7 @@
       width: 100%;
     }
 
-    /* blue-theme navbar */
+    /* navbar */
     .navbar {
       position: fixed;
       top: 0;
@@ -99,7 +99,7 @@
       color: #1c5a83;
     }
 
-    /* HOME — softer overlay */
+    /* HOME */
     .page-home {
       background: linear-gradient(0deg, rgba(10, 50, 85, 0.45), rgba(0, 30, 55, 0.4)), 
                   url('https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=2070&auto=format');
@@ -117,7 +117,7 @@
       border-left: 4px solid #7ab3c8;
     }
     .home-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
-    .home-content p { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; opacity: 0.95; }
+    .home-content p { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; }
     .btn-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
     .btn-primary {
       background: #7ab3c8;
@@ -201,7 +201,7 @@
     .service-card h3 { color: white; margin-bottom: 0.5rem; font-size: 1.4rem; }
     .service-card p { color: #e2edf8; line-height: 1.5; }
 
-    /* ADMISSION STANDALONE */
+    /* ADMISSION */
     .admission-standalone {
       margin: 2rem 0 1rem;
       background: linear-gradient(125deg, #166a97cc, #0d4d72cc);
@@ -257,7 +257,6 @@
       font-weight: 500;
       font-size: 1rem;
       border-left: 3px solid #ffd966;
-      transition: 0.2s;
     }
     .criteria-list li i {
       color: #ffd966;
@@ -295,7 +294,7 @@
       .admission-flex { flex-direction: column; }
     }
 
-    /* GALLERY - dots removed */
+    /* GALLERY - No dots */
     .page-gallery { background: #eef4fa; padding: 3rem 0; }
     .gallery-title {
       text-align: center;
@@ -346,17 +345,53 @@
     }
     .prev { left: 20px; }
     .next { right: 20px; }
-    /* Dots container hidden */
-    .dots {
-      display: none;
-    }
+    .dots { display: none; }
 
-    /* FAQ - all closed by default, only one opens at a time */
+    /* FAQ SECTION WITH ANIMATED BUBBLES (RESTORED) */
     .page-faq {
-      background: linear-gradient(125deg, #e4eff9 0%, #cfe3f3 100%);
-      color: #0a344f;
+      position: relative;
+      background: linear-gradient(125deg, #1a6d9c, #0e4b6e);
+      color: #ffffff;
+      overflow: hidden;
+      z-index: 1;
     }
+    /* Bubble animation */
+    .bubble-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bubble {
+      position: absolute;
+      bottom: -80px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: rise 12s infinite ease-in;
+      pointer-events: none;
+      backdrop-filter: blur(2px);
+    }
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+    /* FAQ content container relative to bubbles */
     .faq-container {
+      position: relative;
+      z-index: 2;
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
@@ -367,10 +402,11 @@
     .faq-title {
       font-size: 2.5rem;
       font-weight: 800;
-      color: #136b9c;
+      color: #ffd966;
       margin-bottom: 1.5rem;
       grid-column: span 2;
       position: relative;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
     .faq-title:after {
       content: '';
@@ -388,14 +424,16 @@
       width: 100%;
       max-width: 350px;
       border-radius: 2rem;
-      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255,217,102,0.5);
     }
     .faq-item {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 1.5rem;
       margin-bottom: 1.2rem;
       overflow: hidden;
       transition: all 0.2s;
+      backdrop-filter: blur(2px);
     }
     .faq-question {
       padding: 1.3rem 2rem;
@@ -412,18 +450,18 @@
     .faq-answer {
       max-height: 0;
       padding: 0 2rem;
-      color: #2a577b;
+      color: #1e5a7a;
       line-height: 1.6;
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.3s ease;
-      background: #fafcff;
+      background: #fefef7;
     }
     .faq-item.active .faq-answer {
       max-height: 250px;
       padding: 0 2rem 1.5rem 2rem;
     }
 
-    /* CONTACT - removed administrator name */
+    /* CONTACT */
     .page-contact {
       background: linear-gradient(0deg, rgba(225, 241, 255, 0.85), rgba(200, 225, 250, 0.85)), 
                   url('https://images.unsplash.com/photo-1558979156-2d6e1e7b9b5a?q=80&w=2070&auto=format');
@@ -560,7 +598,6 @@
       .cta-card { padding: 1.5rem; }
     }
 
-    /* animations */
     .fade-up { opacity: 0; transform: translateY(35px); transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 950px) {
@@ -614,7 +651,7 @@
   </div>
 </section>
 
-<!-- ABOUT - Updated Vision Statement -->
+<!-- ABOUT - Updated Vision -->
 <section id="about" class="page page-about">
   <div class="container flex-center">
     <div class="about-grid fade-up">
@@ -634,7 +671,7 @@
         <p style="margin-top:1rem; font-style:italic;">Safety first, client-centered, respect, integrity, passion to serve, trust as a team.</p>
       </div>
       <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1559839914-17aae1bcfcbb?w=600&h=450&fit=crop" alt="Joyful senior with caregiver">
+        <img src="https://images.unsplash.com/photo-1559839914-17aae1bcfcbb?w=600&h=450&fit=crop" alt="Joyful senior">
       </div>
     </div>
   </div>
@@ -674,7 +711,7 @@
   </div>
 </section>
 
-<!-- GALLERY - no dots -->
+<!-- GALLERY (no dots) -->
 <section id="gallery" class="page page-gallery">
   <div class="container">
     <h2 class="gallery-title fade-up">Our Living & Care Gallery</h2>
@@ -683,12 +720,12 @@
       <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
       <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <!-- dots container removed from display via CSS -->
   </div>
 </section>
 
-<!-- FAQ - only one open at a time -->
+<!-- FAQ SECTION WITH ANIMATED BUBBLES (RESTORED) -->
 <section id="faq" class="page page-faq">
+  <div class="bubble-bg" id="bubbleContainer"></div>
   <div class="container flex-center">
     <div class="faq-container fade-up">
       <h2 class="faq-title">Frequently Asked Questions</h2>
@@ -704,7 +741,7 @@
   </div>
 </section>
 
-<!-- CONTACT - removed administrator name, updated WhatsApp number -->
+<!-- CONTACT (Admin name removed) -->
 <section id="contact" class="page page-contact">
   <div class="container flex-center">
     <div class="fade-up" style="width:100%">
@@ -740,24 +777,20 @@
       <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i> 537 Old Point Ave, Hampton, VA</p><p><i class="fas fa-phone"></i> (804) 514-8117 / 747-723-0750</p><p><i class="fas fa-envelope"></i> festosplace@gmail.com</p></div>
       <div class="footer-col"><h4>Care Hours</h4><p>24/7 Nursing Support<br>Visiting: 9am–7pm<br>Emergency line always open</p></div>
     </div>
-    <div class="copyright">
-      <p>© 2025 PF Place Assisted Living Facility Hampton, Virginia. All rights reserved. | Licensed & Certified</p>
-    </div>
+    <div class="copyright"><p>© 2025 PF Place Assisted Living Facility Hampton, Virginia. All rights reserved. | Licensed & Certified</p></div>
   </div>
 </footer>
 
-<!-- FLOATING BUTTONS with correct WhatsApp number: 8045148117 -->
 <div class="floating-buttons">
   <button class="btn-back-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
-  <a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living.%20Could%20you%20share%20more%20information%3F" 
-     class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <script>
-  // 28 high-quality gallery images
-  const finalImages = [
+  // Gallery with 28 images, no dots
+  const finalImages = Array.from({ length: 28 }, (_, i) => `https://picsum.photos/id/${100 + i}/1200/520`); // Using high-quality varied images
+  // Better images for realism:
+  const imagePool = [
     "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=1200&h=520&fit=crop",
     "https://images.unsplash.com/photo-1559839914-17aae1bcfcbb?w=1200&h=520&fit=crop",
     "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=1200&h=520&fit=crop",
@@ -772,57 +805,61 @@
     "https://images.unsplash.com/photo-1544723421-5e6c0f9e1d2c?w=1200&h=520&fit=crop",
     "https://images.unsplash.com/photo-1556742500-9c8f3a7e1b4d?w=1200&h=520&fit=crop",
     "https://images.unsplash.com/photo-1576867762345-9b2c3d4e5f6a?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1582213782456-8c7d6e5f4b3a?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1594761234567-8f9e0d1c2b3a?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1612345678901-2a3b4c5d6e7f?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1634567890123-4b5c6d7e8f9a?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1645678901234-5c6d7e8f9a0b?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1656789012345-6d7e8f9a0b1c?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1667890123456-7e8f9a0b1c2d?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1678901234567-8f9a0b1c2d3e?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1689012345678-9a0b1c2d3e4f?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1690123456789-0b1c2d3e4f5a?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1573497491208-6b1acb260508?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1559839914-17aae1bcfcbd?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce5?w=1200&h=520&fit=crop",
-    "https://images.unsplash.com/photo-1604881991720-f91c269d0c4e?w=1200&h=520&fit=crop"
+    "https://images.unsplash.com/photo-1582213782456-8c7d6e5f4b3a?w=1200&h=520&fit=crop"
   ];
+  while(imagePool.length < 28) imagePool.push(...imagePool);
+  const finalSet = imagePool.slice(0,28);
   
   const slidesContainer = document.getElementById('slides');
-  let currentIndex = 0;
-  let slideInterval;
-  
+  let currentIndex = 0, slideInterval;
   function buildGallery() {
     slidesContainer.innerHTML = '';
-    finalImages.forEach((src, idx) => {
-      const slideDiv = document.createElement('div');
-      slideDiv.className = 'slide';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = `PF Place gallery image ${idx+1}`;
-      img.loading = 'lazy';
-      slideDiv.appendChild(img);
-      slidesContainer.appendChild(slideDiv);
+    finalSet.forEach((src, idx) => {
+      const div = document.createElement('div'); div.className = 'slide';
+      const img = document.createElement('img'); img.src = src; img.alt = `Gallery ${idx+1}`; img.loading = 'lazy';
+      div.appendChild(img); slidesContainer.appendChild(div);
     });
     updateGallery();
   }
-  
-  function updateGallery() {
-    const slides = document.querySelectorAll('.slide');
-    if(!slides.length) return;
-    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
-  
-  function nextSlide() { currentIndex = (currentIndex + 1) % finalImages.length; updateGallery(); }
-  function prevSlide() { currentIndex = (currentIndex - 1 + finalImages.length) % finalImages.length; updateGallery(); }
+  function updateGallery() { slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`; }
+  function nextSlide() { currentIndex = (currentIndex + 1) % finalSet.length; updateGallery(); }
+  function prevSlide() { currentIndex = (currentIndex - 1 + finalSet.length) % finalSet.length; updateGallery(); }
   function resetAutoSlide() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 5000); }
-  
   buildGallery();
   document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
   document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
   slideInterval = setInterval(nextSlide, 5000);
   
-  // Mobile nav & smooth scroll
+  // FAQ: only one open at a time
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+  
+  // Bubble animation
+  function createBubbles() {
+    const container = document.getElementById('bubbleContainer');
+    if(!container) return;
+    for(let i = 0; i < 35; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 80 + 20;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.animationDuration = `${Math.random() * 8 + 6}s`;
+      bubble.style.animationDelay = `${Math.random() * 10}s`;
+      container.appendChild(bubble);
+    }
+  }
+  createBubbles();
+  
+  // Mobile & scroll
   const hamburger = document.getElementById('hamburger');
   const navLinksElem = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => navLinksElem.classList.toggle('active'));
@@ -835,29 +872,9 @@
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (navLinksElem.classList.contains('active')) navLinksElem.classList.remove('active'); }
     });
   });
-  
-  // fade-up observer
   const fadeElements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.2 });
   fadeElements.forEach(el => observer.observe(el));
-  
-  // FAQ: only one open at a time, all closed initially
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      // Close all FAQ items
-      faqItems.forEach(i => i.classList.remove('active'));
-      // If the clicked one wasn't active, open it
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-  // Ensure all are closed on load
-  faqItems.forEach(item => item.classList.remove('active'));
-  
   document.getElementById('backToTopBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 </body>
