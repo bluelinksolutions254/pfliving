@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PF Place | Blue Haven Senior Living — Hampton, VA</title>
+  <!-- Google Fonts: Playfair Display (elegant headings) + Inter (clean body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #eef3fc;
+      color: #0a2f44;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .logo h1, .faq-question, .btn-primary, .btn-outline-light {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* full-screen pages */
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      width: 100%;
+    }
+
+    /* blue-theme navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2000;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(30, 74, 118, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 20, 40, 0.05);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0.8rem 40px;
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+    .logo h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0f5b8c, #1b4e7a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #4f7ea3;
+      display: block;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1c5a83;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: #e9b35f; }
+    .hamburger {
+      display: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+      color: #1c5a83;
+    }
+
+    /* HOME */
+    .page-home {
+      background: linear-gradient(0deg, rgba(10, 50, 85, 0.88), rgba(0, 30, 55, 0.75)), 
+                  url('https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=2070&auto=format');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center 35%;
+      color: white;
+    }
+    .home-content {
+      max-width: 750px;
+      background: rgba(0, 35, 55, 0.55);
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 2.5rem;
+      border-left: 4px solid #7ab3c8;
+    }
+    .home-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+    .home-content p { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; opacity: 0.95; }
+    .btn-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .btn-primary {
+      background: #7ab3c8;
+      color: #0a2f44;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.25s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .btn-primary:hover { background: #ffd966; color: #1e3a4a; transform: translateY(-3px); }
+    .btn-outline-light {
+      border: 1.5px solid white;
+      background: transparent;
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline-light:hover { background: rgba(122, 179, 200, 0.3); transform: translateY(-2px); }
+    .why-badge {
+      margin-top: 1rem;
+      background: rgba(0, 45, 70, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 0.7rem 1.8rem;
+      display: inline-block;
+    }
+
+    /* ABOUT */
+    .page-about { background: #f7fafd; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-img img {
+      width: 100%;
+      border-radius: 2rem;
+      box-shadow: 0 25px 35px -15px rgba(0, 45, 75, 0.2);
+      transition: transform 0.4s ease;
+      border: 1px solid #cde3f2;
+    }
+    .about-img:hover img { transform: scale(1.02); }
+    .vision-mission h2 { font-size: 2rem; font-weight: 800; color: #1a6091; margin-bottom: 1.2rem; }
+    .vision-mission p { color: #1c4c6e; line-height: 1.6; margin-bottom: 1rem; }
+    .script-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+    .script-item {
+      background: #e7f0fa; border-radius: 2rem; padding: 0.9rem 1.2rem; 
+      border: 1px solid #bfd9ef; font-weight: 600; display: flex; align-items: center; gap: 0.8rem;
+      transition: all 0.2s;
+      color: #1a4a6e;
+    }
+    .script-item:hover { background: #d5e8fa; transform: translateX(5px); }
+    .script-item i { color: #ffb347; font-size: 1.2rem; }
+
+    /* SERVICES - increased padding for breathing space */
+    .page-services {
+      background: linear-gradient(rgba(10, 55, 85, 0.94), rgba(4, 35, 55, 0.96)), 
+                  url('https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?q=80&w=2070&auto=format');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 4rem 0;
+    }
+    .services-header { text-align: center; margin-bottom: 3rem; }
+    .services-header h2 { font-size: 2.8rem; font-weight: 800; color: #8bc9e5; margin-bottom: 0.5rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+    .service-card {
+      background: rgba(20, 75, 105, 0.85); backdrop-filter: blur(4px);
+      border-radius: 2rem; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease; border: 1px solid #7ab3c850;
+    }
+    .service-card:hover { transform: translateY(-10px); background: #2d7197; }
+    .service-card i { font-size: 2.5rem; color: #ffd966; margin-bottom: 1.2rem; }
+    .service-card h3 { color: white; margin-bottom: 0.5rem; font-size: 1.4rem; }
+    .service-card p { color: #e2edf8; line-height: 1.5; }
+
+    /* ADMISSION STANDALONE */
+    .admission-standalone {
+      margin: 2rem 0 1rem;
+      background: linear-gradient(125deg, #166a97, #0d4d72);
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      border: 1px solid rgba(255, 217, 102, 0.3);
+    }
+    .admission-standalone:hover {
+      transform: scale(1.01);
+      box-shadow: 0 25px 40px -12px black;
+    }
+    .admission-standalone h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffd966;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-left: 5px solid #ffd966;
+      padding-left: 1.2rem;
+    }
+    .admission-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: stretch;
+      justify-content: space-between;
+    }
+    .criteria-column {
+      flex: 2;
+      background: rgba(255, 255, 245, 0.1);
+      backdrop-filter: blur(2px);
+      border-radius: 1.8rem;
+      padding: 1.5rem;
+    }
+    .criteria-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .criteria-list li {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 3rem;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+      font-size: 1rem;
+      border-left: 3px solid #ffd966;
+      transition: 0.2s;
+    }
+    .criteria-list li i {
+      color: #ffd966;
+      font-size: 1.25rem;
+      width: 1.8rem;
+    }
+    .welcome-journey {
+      flex: 1.2;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+    }
+    .welcome-journey i {
+      font-size: 2.8rem;
+      color: #ffd966;
+      margin-bottom: 1rem;
+    }
+    .welcome-journey p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    .welcome-journey strong {
+      color: #ffd966;
+      font-weight: 700;
+    }
+    @media (max-width: 780px) {
+      .admission-flex { flex-direction: column; }
+    }
+
+    /* GALLERY - centered title, no numbering */
+    .page-gallery { background: #eef4fa; padding: 3rem 0; }
+    .gallery-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #136b9c;
+      margin-bottom: 2rem;
+      font-weight: 800;
+    }
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+      box-shadow: 0 30px 40px -20px rgba(0, 35, 60, 0.25);
+      background: #f0f6fe;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .slide {
+      flex: 0 0 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 65, 95, 0.75);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.2s;
+      z-index: 10;
+    }
+    .gallery-btn:hover {
+      background: #ffd966;
+      color: #1a3a4a;
+    }
+    .prev { left: 20px; }
+    .next { right: 20px; }
+    .dots {
+      text-align: center;
+      margin-top: 1.2rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+    .dot {
+      height: 12px;
+      width: 12px;
+      background-color: #bdd4e8;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .dot.active {
+      background-color: #1a6091;
+      transform: scale(1.2);
+    }
+
+    /* FAQ - all closed by default */
+    .page-faq {
+      background: linear-gradient(125deg, #e4eff9 0%, #cfe3f3 100%);
+      color: #0a344f;
+    }
+    .faq-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .faq-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #136b9c;
+      margin-bottom: 1.5rem;
+      grid-column: span 2;
+      position: relative;
+    }
+    .faq-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: #ffd966;
+      border-radius: 4px;
+    }
+    .faq-accordion { grid-column: 1; }
+    .faq-side-image { grid-column: 2; text-align: center; }
+    .faq-side-image img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 2rem;
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+    }
+    .faq-item {
+      background: white;
+      border-radius: 1.5rem;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .faq-question {
+      padding: 1.3rem 2rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #136b9c;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+    }
+    .faq-question i { color: #ffb84d; transition: 0.2s; }
+    .faq-answer {
+      max-height: 0;
+      padding: 0 2rem;
+      color: #2a577b;
+      line-height: 1.6;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      background: #fafcff;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding: 0 2rem 1.5rem 2rem;
+    }
+
+    /* CONTACT - CTA card spacing fixed */
+    .page-contact {
+      background: linear-gradient(0deg, rgba(225, 241, 255, 0.7), rgba(200, 225, 250, 0.8)), 
+                  url('https://images.unsplash.com/photo-1558979156-2d6e1e7b9b5a?q=80&w=2070&auto=format');
+      background-attachment: fixed;
+      background-size: cover;
+      padding: 3rem 0;
+    }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+    .contact-details {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid #7ab3c8;
+      color: #0f4468;
+    }
+    .contact-details h3 { color: #136b9c; margin-bottom: 1rem; font-size: 1.8rem; }
+    .contact-line { display: flex; align-items: center; gap: 1rem; margin: 1rem 0; }
+    .contact-line i { color: #7ab3c8; width: 1.8rem; font-size: 1.2rem; }
+    .map-container {
+      background: #fff;
+      border-radius: 2rem;
+      overflow: hidden;
+      min-height: 380px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 0;
+    }
+    .cta-card {
+      margin-top: 2rem;
+      background: #1d6f9e;
+      border-radius: 2rem;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      color: white;
+      grid-column: span 2;
+      transition: 0.2s;
+    }
+    .cta-card i {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+    .cta-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #ffd966;
+    }
+    .cta-card p {
+      max-width: 500px;
+      margin: 0 auto 1.2rem auto;
+      line-height: 1.5;
+    }
+    .cta-card .btn-primary {
+      background: #ffd966;
+      color: #1a3a4a;
+      margin-top: 0.5rem;
+      display: inline-flex;
+    }
+    /* FOOTER - center copyright */
+    .main-footer {
+      background: #0a3b55;
+      padding: 2.5rem 0 1.5rem;
+      color: #d4eaf5;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 { color: #ffd966; margin-bottom: 1.2rem; font-size: 1.2rem; }
+    .footer-col a { color: #cbe5f5; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: 0.2s; }
+    .footer-col a:hover { color: #ffd966; }
+    .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+    .social-links a {
+      background: #2d6b8a; width: 38px; height: 38px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: 0.2s; color: white;
+    }
+    .social-links a:hover { background: #ffd966; color: #0a2f44; }
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #3a6a7f;
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #cbe5f5;
+    }
+
+    /* FLOATING BUTTONS */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      z-index: 3000;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      pointer-events: none;
+      padding: 0 25px;
+    }
+    .btn-back-top, .btn-whatsapp {
+      pointer-events: auto;
+      background: #1d6f9e;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+    }
+    .btn-back-top { background: #136b9c; }
+    .btn-back-top:hover { background: #ffd966; color: #0a2f44; transform: translateY(-5px); }
+    .btn-whatsapp { background: #25D366; }
+    .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-5px); }
+    @media (max-width: 650px) {
+      .btn-back-top, .btn-whatsapp { width: 44px; height: 44px; font-size: 1.4rem; }
+      .floating-buttons { bottom: 20px; padding: 0 15px; }
+      .slide img { height: 320px; }
+      .cta-card { padding: 1.5rem; }
+    }
+
+    /* animations */
+    .fade-up { opacity: 0; transform: translateY(35px); transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 950px) {
+      .about-grid, .faq-container { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-title { grid-column: span 1; text-align: center; }
+      .faq-title:after { left: 50%; transform: translateX(-50%); }
+      .home-content h1 { font-size: 2.4rem; }
+      .container { padding: 0 24px; }
+      .nav-links {
+        position: fixed; top: 70px; left: -100%; background: white; width: 75%;
+        height: calc(100vh - 70px); flex-direction: column; padding: 2rem; gap: 1.8rem;
+        transition: 0.3s; box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+      }
+      .nav-links.active { left: 0; }
+      .hamburger { display: block; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .cta-card { grid-column: span 1; }
+    }
+    .flex-center { display: flex; flex-direction: column; justify-content: center; min-height: calc(100vh - 80px); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo"><h1>PF PLACE</h1><span>Assisted Living Facility · Hampton, VA</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">FAQs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="page page-home">
+  <div class="container flex-center">
+    <div class="home-content fade-up">
+      <h1>PF Place Assisted Living Facility</h1>
+      <p>Compassionate care, dignified living — where every day feels like home in Hampton Roads.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn-primary"><i class="fas fa-phone-alt"></i> Contact Us</a>
+        <a href="#about" class="btn-outline-light"><i class="fas fa-heart"></i> Our Mission</a>
+      </div>
+      <div class="why-badge"><i class="fas fa-star-of-life"></i> Safety · Respect · Integrity · Passion</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page page-about">
+  <div class="container flex-center">
+    <div class="about-grid fade-up">
+      <div class="vision-mission">
+        <h2>Our Vision</h2>
+        <p style="font-size:1.1rem; margin-bottom:1.5rem;">We strive to be one of the preferred assisted living facilities within Hampton Roads.</p>
+        <h2>Our Mission</h2>
+        <p>As we provide dignified services to our residents, we are guided by our <strong>S.C.R.I.P.T.</strong> values:</p>
+        <div class="script-list">
+          <div class="script-item"><i class="fas fa-shield-alt"></i> Safety</div>
+          <div class="script-item"><i class="fas fa-users"></i> Clients</div>
+          <div class="script-item"><i class="fas fa-hand-sparkles"></i> Respect</div>
+          <div class="script-item"><i class="fas fa-gem"></i> Integrity</div>
+          <div class="script-item"><i class="fas fa-fire"></i> Passion</div>
+          <div class="script-item"><i class="fas fa-handshake"></i> Trust</div>
+        </div>
+        <p style="margin-top:1rem; font-style:italic;">Safety first, client-centered, respect, integrity, passion to serve, trust as a team.</p>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1559839914-17aae1bcfcbb?w=600&h=450&fit=crop" alt="Joyful senior with caregiver">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES + ADMISSION (extra padding for breathing) -->
+<section id="services" class="page page-services">
+  <div class="container flex-center" style="padding-top: 3rem; padding-bottom: 3rem;">
+    <div class="services-header fade-up"><h2>Our Services</h2><p>Holistic support — body, mind & spirit</p></div>
+    <div class="services-grid fade-up">
+      <div class="service-card"><i class="fas fa-car-side"></i><h3>Transportation</h3><p>Medical appointments & outings</p></div>
+      <div class="service-card"><i class="fas fa-pills"></i><h3>Medication Management</h3><p>Safe, timely administration</p></div>
+      <div class="service-card"><i class="fas fa-apple-alt"></i><h3>Nutrition</h3><p>Chef-prepared balanced meals</p></div>
+      <div class="service-card"><i class="fas fa-dumbbell"></i><h3>Fitness</h3><p>Gentle exercise & mobility</p></div>
+      <div class="service-card"><i class="fas fa-palette"></i><h3>Recreation</h3><p>Activities & social events</p></div>
+      <div class="service-card"><i class="fas fa-user-friends"></i><h3>Companionship</h3><p>Warm, meaningful connection</p></div>
+      <div class="service-card"><i class="fas fa-heartbeat"></i><h3>Emotional Support</h3><p>Counseling & empathic care</p></div>
+    </div>
+    <div class="admission-standalone fade-up">
+      <h3><i class="fas fa-clipboard-list"></i> Admission & Eligibility Criteria</h3>
+      <div class="admission-flex">
+        <div class="criteria-column">
+          <ul class="criteria-list">
+            <li><i class="fas fa-user-check"></i> Residents must be at least 18 years of age</li>
+            <li><i class="fas fa-hands-helping"></i> Must have a need for assisted living</li>
+            <li><i class="fas fa-chalkboard-user"></i> Able to receive support from trained staff</li>
+            <li><i class="fas fa-file-invoice-dollar"></i> Meet financial requirements & complete documentation</li>
+          </ul>
+        </div>
+        <div class="welcome-journey">
+          <i class="fas fa-hand-holding-heart"></i>
+          <p>We welcome all who seek a supportive, respectful home environment.</p>
+          <p><strong>Your journey to compassionate care starts here. </strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY - centered title, no numbering -->
+<section id="gallery" class="page page-gallery">
+  <div class="container">
+    <h2 class="gallery-title fade-up">Our Living & Care Gallery</h2>
+    <div class="gallery-container fade-up">
+      <div class="slides" id="slides"></div>
+      <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+      <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="dots" id="dotsContainer"></div>
+  </div>
+</section>
+
+<!-- FAQ - all closed initially (no active class) -->
+<section id="faq" class="page page-faq">
+  <div class="container flex-center">
+    <div class="faq-container fade-up">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-accordion">
+        <div class="faq-item"><div class="faq-question">What makes PF Place different? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Our S.C.R.I.P.T. values guide every interaction: Safety, Clients, Respect, Integrity, Passion, Trust. We focus on personalized care and dignified living.</div></div>
+        <div class="faq-item"><div class="faq-question">What types of services do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Transportation, medication management, nutrition, fitness, recreation, companionship, emotional support 24/7 care tailored to individual needs.</div></div>
+        <div class="faq-item"><div class="faq-question">What are the admission requirements? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Residents must be 18+, require assisted living support, able to receive help from trained staff, and meet financial/documentation requirements. We welcome everyone seeking a supportive home.</div></div>
+        <div class="faq-item"><div class="faq-question">Can I schedule a tour? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! Call (804) 514-8117 or email festosplace@gmail.com to arrange a personal tour with administrator Terezia Wamalwa.</div></div>
+        <div class="faq-item"><div class="faq-question">Do you accept Medicare/Medicaid? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">We work with various long‑term care insurance plans and private pay options. Contact us for financial coordination.</div></div>
+      </div>
+      <div class="faq-side-image"><img src="https://images.unsplash.com/photo-1576765608535-6f04d6a3b3c7?w=400&h=400&fit=crop" alt="Happy senior resident"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT - improved spacing for CTA card -->
+<section id="contact" class="page page-contact">
+  <div class="container flex-center">
+    <div class="fade-up" style="width:100%">
+      <div class="contact-wrapper">
+        <div class="contact-details">
+          <h3><i class="fas fa-map-pin"></i> PF Place Assisted Living</h3>
+          <div class="contact-line"><i class="fas fa-map-marker-alt"></i> 537 Old Point Avenue, Hampton, Virginia 23663</div>
+          <div class="contact-line"><i class="fas fa-phone-alt"></i> (804) 514-8117 &nbsp;|&nbsp; 747-723-0750</div>
+          <div class="contact-line"><i class="fas fa-fax"></i> Fax: 757-722-0148</div>
+          <div class="contact-line"><i class="fas fa-envelope"></i> festosplace@gmail.com</div>
+          <div><i class="fas fa-user-tie"></i> <strong>Administrator:</strong> Terezia Wamalwa</div>
+          <div class="contact-line"><i class="fas fa-clock"></i> 24/7 Resident Support · Tours by appointment</div>
+          <a href="tel:8045148117" class="btn-primary" style="background:#2c7cb6; color:white; margin-top:1.5rem; display:inline-block;"><i class="fas fa-phone"></i> Call Now</a>
+        </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.123456789!2d-76.3456789!3d37.0299876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ba9a123456789%3A0xabcdef123456789!2s537%20Old%20Point%20Ave%2C%20Hampton%2C%20VA%2023663!5e0!3m2!1sen!2sus!4v1713214567890" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="cta-card">
+        <i class="fas fa-hands-helping"></i>
+        <h3>Schedule a Visit</h3>
+        <p>Experience the warmth of PF Place. Speak with our administrator or request a personal tour.</p>
+        <a href="mailto:festosplace@gmail.com" class="btn-primary"><i class="fas fa-calendar-check"></i> Email us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>PF PLACE</h4><p>Assisted Living Facility dedicated to dignity, safety, and genuine care in Hampton Roads.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+      <div class="footer-col"><h4>Explore</h4><a href="#home">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#faq">FAQs</a></div>
+      <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i> 537 Old Point Ave, Hampton, VA</p><p><i class="fas fa-phone"></i> (804) 514-8117 / 747-723-0750</p><p><i class="fas fa-envelope"></i> festosplace@gmail.com</p></div>
+      <div class="footer-col"><h4>Care Hours</h4><p>24/7 Nursing Support<br>Visiting: 9am–7pm<br>Emergency line always open</p></div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 PF Place Assisted Living Facility Hampton, Virginia. All rights reserved. | Licensed & Certified</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-buttons">
+  <button class="btn-back-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
+  <a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<script>
+  // 28 high-quality gallery images (no numbering, no counter display)
+  const finalImages = [
+    "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1559839914-17aae1bcfcbb?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1604881991720-f91c269d0c4d?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1595353867619-ef9e7a9b4b8b?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1576765608535-6f04d6a3b3c7?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1558979156-2d6e1e7b9b5a?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1544027993-37abf9d2d7c4?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1560440021-33f9f9c7a9b2?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1585110396000-c9ffd3e4b5a7?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1544723421-5e6c0f9e1d2c?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1556742500-9c8f3a7e1b4d?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1576867762345-9b2c3d4e5f6a?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1582213782456-8c7d6e5f4b3a?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1594761234567-8f9e0d1c2b3a?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1612345678901-2a3b4c5d6e7f?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1634567890123-4b5c6d7e8f9a?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1645678901234-5c6d7e8f9a0b?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1656789012345-6d7e8f9a0b1c?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1667890123456-7e8f9a0b1c2d?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1678901234567-8f9a0b1c2d3e?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1689012345678-9a0b1c2d3e4f?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1690123456789-0b1c2d3e4f5a?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1573497491208-6b1acb260508?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1559839914-17aae1bcfcbd?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce5?w=1200&h=520&fit=crop",
+    "https://images.unsplash.com/photo-1604881991720-f91c269d0c4e?w=1200&h=520&fit=crop"
+  ];
+  
+  const slidesContainer = document.getElementById('slides');
+  const dotsContainer = document.getElementById('dotsContainer');
+  let currentIndex = 0;
+  let slideInterval;
+  
+  function buildGallery() {
+    slidesContainer.innerHTML = '';
+    finalImages.forEach((src, idx) => {
+      const slideDiv = document.createElement('div');
+      slideDiv.className = 'slide';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `PF Place gallery image ${idx+1}`;
+      img.loading = 'lazy';
+      slideDiv.appendChild(img);
+      slidesContainer.appendChild(slideDiv);
+    });
+    createDots();
+    updateGallery();
+  }
+  
+  function updateGallery() {
+    const slides = document.querySelectorAll('.slide');
+    if(!slides.length) return;
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    document.querySelectorAll('.dot').forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
+  }
+  
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    for(let i = 0; i < finalImages.length; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if(i === currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateGallery();
+        resetAutoSlide();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+  
+  function nextSlide() { currentIndex = (currentIndex + 1) % finalImages.length; updateGallery(); }
+  function prevSlide() { currentIndex = (currentIndex - 1 + finalImages.length) % finalImages.length; updateGallery(); }
+  function resetAutoSlide() { clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 5000); }
+  
+  buildGallery();
+  document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+  document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+  slideInterval = setInterval(nextSlide, 5000);
+  
+  // Mobile nav & smooth scroll
+  const hamburger = document.getElementById('hamburger');
+  const navLinksElem = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinksElem.classList.toggle('active'));
+  document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinksElem.classList.remove('active')));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); if (navLinksElem.classList.contains('active')) navLinksElem.classList.remove('active'); }
+    });
+  });
+  
+  // fade-up observer
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.2 });
+  fadeElements.forEach(el => observer.observe(el));
+  
+  // FAQ: all closed initially (no active class). Add click to open/close individually
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      // close all others if you want only one open? but per spec "No FAQ should be open unless opened" -> we toggle individually.
+      if (!isActive) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  });
+  // ensure none are active on load
+  faqItems.forEach(item => item.classList.remove('active'));
+  
+  document.getElementById('backToTopBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
