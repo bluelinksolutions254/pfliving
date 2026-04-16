@@ -99,9 +99,9 @@
       color: #1c5a83;
     }
 
-    /* HOME */
+    /* HOME — softer overlay */
     .page-home {
-      background: linear-gradient(0deg, rgba(10, 50, 85, 0.88), rgba(0, 30, 55, 0.75)), 
+      background: linear-gradient(0deg, rgba(10, 50, 85, 0.45), rgba(0, 30, 55, 0.4)), 
                   url('https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=2070&auto=format');
       background-attachment: fixed;
       background-size: cover;
@@ -110,8 +110,8 @@
     }
     .home-content {
       max-width: 750px;
-      background: rgba(0, 35, 55, 0.55);
-      backdrop-filter: blur(2px);
+      background: rgba(0, 35, 55, 0.45);
+      backdrop-filter: blur(1px);
       border-radius: 2rem;
       padding: 2.5rem;
       border-left: 4px solid #7ab3c8;
@@ -148,8 +148,8 @@
     .btn-outline-light:hover { background: rgba(122, 179, 200, 0.3); transform: translateY(-2px); }
     .why-badge {
       margin-top: 1rem;
-      background: rgba(0, 45, 70, 0.7);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 45, 70, 0.6);
+      backdrop-filter: blur(4px);
       border-radius: 60px;
       padding: 0.7rem 1.8rem;
       display: inline-block;
@@ -178,9 +178,9 @@
     .script-item:hover { background: #d5e8fa; transform: translateX(5px); }
     .script-item i { color: #ffb347; font-size: 1.2rem; }
 
-    /* SERVICES - increased padding for breathing space */
+    /* SERVICES */
     .page-services {
-      background: linear-gradient(rgba(10, 55, 85, 0.94), rgba(4, 35, 55, 0.96)), 
+      background: linear-gradient(rgba(10, 55, 85, 0.65), rgba(4, 35, 55, 0.6)), 
                   url('https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?q=80&w=2070&auto=format');
       background-attachment: fixed;
       background-size: cover;
@@ -189,11 +189,12 @@
       padding: 4rem 0;
     }
     .services-header { text-align: center; margin-bottom: 3rem; }
-    .services-header h2 { font-size: 2.8rem; font-weight: 800; color: #8bc9e5; margin-bottom: 0.5rem; }
+    .services-header h2 { font-size: 2.8rem; font-weight: 800; color: #ffd966; margin-bottom: 0.5rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+    .services-header p { color: #f0f8ff; font-size: 1.1rem; text-shadow: 0 1px 1px rgba(0,0,0,0.1);}
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
     .service-card {
-      background: rgba(20, 75, 105, 0.85); backdrop-filter: blur(4px);
-      border-radius: 2rem; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease; border: 1px solid #7ab3c850;
+      background: rgba(20, 75, 105, 0.8); backdrop-filter: blur(4px);
+      border-radius: 2rem; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease; border: 1px solid #ffd96640;
     }
     .service-card:hover { transform: translateY(-10px); background: #2d7197; }
     .service-card i { font-size: 2.5rem; color: #ffd966; margin-bottom: 1.2rem; }
@@ -203,12 +204,13 @@
     /* ADMISSION STANDALONE */
     .admission-standalone {
       margin: 2rem 0 1rem;
-      background: linear-gradient(125deg, #166a97, #0d4d72);
+      background: linear-gradient(125deg, #166a97cc, #0d4d72cc);
+      backdrop-filter: blur(2px);
       border-radius: 2rem;
       padding: 2.5rem 2rem;
       box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.3);
       transition: transform 0.25s ease, box-shadow 0.3s;
-      border: 1px solid rgba(255, 217, 102, 0.3);
+      border: 1px solid rgba(255, 217, 102, 0.4);
     }
     .admission-standalone:hover {
       transform: scale(1.01);
@@ -234,7 +236,7 @@
     }
     .criteria-column {
       flex: 2;
-      background: rgba(255, 255, 245, 0.1);
+      background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(2px);
       border-radius: 1.8rem;
       padding: 1.5rem;
@@ -246,7 +248,7 @@
       gap: 1rem;
     }
     .criteria-list li {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 3rem;
       padding: 0.9rem 1.5rem;
       display: flex;
@@ -264,7 +266,7 @@
     }
     .welcome-journey {
       flex: 1.2;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.35);
       border-radius: 1.8rem;
       padding: 1.8rem;
       text-align: center;
@@ -272,7 +274,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(2px);
     }
     .welcome-journey i {
       font-size: 2.8rem;
@@ -293,7 +295,7 @@
       .admission-flex { flex-direction: column; }
     }
 
-    /* GALLERY - centered title, no numbering */
+    /* GALLERY - dots removed */
     .page-gallery { background: #eef4fa; padding: 3rem 0; }
     .gallery-title {
       text-align: center;
@@ -344,30 +346,12 @@
     }
     .prev { left: 20px; }
     .next { right: 20px; }
+    /* Dots container hidden */
     .dots {
-      text-align: center;
-      margin-top: 1.2rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-    }
-    .dot {
-      height: 12px;
-      width: 12px;
-      background-color: #bdd4e8;
-      border-radius: 50%;
-      display: inline-block;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .dot.active {
-      background-color: #1a6091;
-      transform: scale(1.2);
+      display: none;
     }
 
-    /* FAQ - all closed by default */
+    /* FAQ - all closed by default, only one opens at a time */
     .page-faq {
       background: linear-gradient(125deg, #e4eff9 0%, #cfe3f3 100%);
       color: #0a344f;
@@ -439,9 +423,9 @@
       padding: 0 2rem 1.5rem 2rem;
     }
 
-    /* CONTACT - CTA card spacing fixed */
+    /* CONTACT - removed administrator name */
     .page-contact {
-      background: linear-gradient(0deg, rgba(225, 241, 255, 0.7), rgba(200, 225, 250, 0.8)), 
+      background: linear-gradient(0deg, rgba(225, 241, 255, 0.85), rgba(200, 225, 250, 0.85)), 
                   url('https://images.unsplash.com/photo-1558979156-2d6e1e7b9b5a?q=80&w=2070&auto=format');
       background-attachment: fixed;
       background-size: cover;
@@ -507,7 +491,7 @@
       margin-top: 0.5rem;
       display: inline-flex;
     }
-    /* FOOTER - center copyright */
+    /* FOOTER */
     .main-footer {
       background: #0a3b55;
       padding: 2.5rem 0 1.5rem;
@@ -630,13 +614,13 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT - Updated Vision Statement -->
 <section id="about" class="page page-about">
   <div class="container flex-center">
     <div class="about-grid fade-up">
       <div class="vision-mission">
         <h2>Our Vision</h2>
-        <p style="font-size:1.1rem; margin-bottom:1.5rem;">We strive to be one of the preferred assisted living facilities within Hampton Roads.</p>
+        <p style="font-size:1.1rem; margin-bottom:1.5rem;">We thrive to be the most preferred assisted living facility within Hampton Roads.</p>
         <h2>Our Mission</h2>
         <p>As we provide dignified services to our residents, we are guided by our <strong>S.C.R.I.P.T.</strong> values:</p>
         <div class="script-list">
@@ -656,7 +640,7 @@
   </div>
 </section>
 
-<!-- SERVICES + ADMISSION (extra padding for breathing) -->
+<!-- SERVICES + ADMISSION -->
 <section id="services" class="page page-services">
   <div class="container flex-center" style="padding-top: 3rem; padding-bottom: 3rem;">
     <div class="services-header fade-up"><h2>Our Services</h2><p>Holistic support — body, mind & spirit</p></div>
@@ -683,14 +667,14 @@
         <div class="welcome-journey">
           <i class="fas fa-hand-holding-heart"></i>
           <p>We welcome all who seek a supportive, respectful home environment.</p>
-          <p><strong>Your journey to compassionate care starts here. </strong></p>
+          <p><strong>✨ Your journey to compassionate care starts here. ✨</strong></p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY - centered title, no numbering -->
+<!-- GALLERY - no dots -->
 <section id="gallery" class="page page-gallery">
   <div class="container">
     <h2 class="gallery-title fade-up">Our Living & Care Gallery</h2>
@@ -699,20 +683,20 @@
       <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
       <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="dots" id="dotsContainer"></div>
+    <!-- dots container removed from display via CSS -->
   </div>
 </section>
 
-<!-- FAQ - all closed initially (no active class) -->
+<!-- FAQ - only one open at a time -->
 <section id="faq" class="page page-faq">
   <div class="container flex-center">
     <div class="faq-container fade-up">
       <h2 class="faq-title">Frequently Asked Questions</h2>
       <div class="faq-accordion">
         <div class="faq-item"><div class="faq-question">What makes PF Place different? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Our S.C.R.I.P.T. values guide every interaction: Safety, Clients, Respect, Integrity, Passion, Trust. We focus on personalized care and dignified living.</div></div>
-        <div class="faq-item"><div class="faq-question">What types of services do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Transportation, medication management, nutrition, fitness, recreation, companionship, emotional support 24/7 care tailored to individual needs.</div></div>
+        <div class="faq-item"><div class="faq-question">What types of services do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Transportation, medication management, nutrition, fitness, recreation, companionship, emotional support — 24/7 care tailored to individual needs.</div></div>
         <div class="faq-item"><div class="faq-question">What are the admission requirements? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Residents must be 18+, require assisted living support, able to receive help from trained staff, and meet financial/documentation requirements. We welcome everyone seeking a supportive home.</div></div>
-        <div class="faq-item"><div class="faq-question">Can I schedule a tour? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! Call (804) 514-8117 or email festosplace@gmail.com to arrange a personal tour with administrator Terezia Wamalwa.</div></div>
+        <div class="faq-item"><div class="faq-question">Can I schedule a tour? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! Call (804) 514-8117 or email festosplace@gmail.com to arrange a personal tour.</div></div>
         <div class="faq-item"><div class="faq-question">Do you accept Medicare/Medicaid? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">We work with various long‑term care insurance plans and private pay options. Contact us for financial coordination.</div></div>
       </div>
       <div class="faq-side-image"><img src="https://images.unsplash.com/photo-1576765608535-6f04d6a3b3c7?w=400&h=400&fit=crop" alt="Happy senior resident"></div>
@@ -720,7 +704,7 @@
   </div>
 </section>
 
-<!-- CONTACT - improved spacing for CTA card -->
+<!-- CONTACT - removed administrator name, updated WhatsApp number -->
 <section id="contact" class="page page-contact">
   <div class="container flex-center">
     <div class="fade-up" style="width:100%">
@@ -731,7 +715,6 @@
           <div class="contact-line"><i class="fas fa-phone-alt"></i> (804) 514-8117 &nbsp;|&nbsp; 747-723-0750</div>
           <div class="contact-line"><i class="fas fa-fax"></i> Fax: 757-722-0148</div>
           <div class="contact-line"><i class="fas fa-envelope"></i> festosplace@gmail.com</div>
-          <div><i class="fas fa-user-tie"></i> <strong>Administrator:</strong> Terezia Wamalwa</div>
           <div class="contact-line"><i class="fas fa-clock"></i> 24/7 Resident Support · Tours by appointment</div>
           <a href="tel:8045148117" class="btn-primary" style="background:#2c7cb6; color:white; margin-top:1.5rem; display:inline-block;"><i class="fas fa-phone"></i> Call Now</a>
         </div>
@@ -763,14 +746,17 @@
   </div>
 </footer>
 
-<!-- FLOATING BUTTONS -->
+<!-- FLOATING BUTTONS with correct WhatsApp number: 8045148117 -->
 <div class="floating-buttons">
   <button class="btn-back-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
-  <a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living.%20Could%20you%20share%20more%20information%3F" 
+     class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </div>
 
 <script>
-  // 28 high-quality gallery images (no numbering, no counter display)
+  // 28 high-quality gallery images
   const finalImages = [
     "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=1200&h=520&fit=crop",
     "https://images.unsplash.com/photo-1559839914-17aae1bcfcbb?w=1200&h=520&fit=crop",
@@ -803,7 +789,6 @@
   ];
   
   const slidesContainer = document.getElementById('slides');
-  const dotsContainer = document.getElementById('dotsContainer');
   let currentIndex = 0;
   let slideInterval;
   
@@ -819,7 +804,6 @@
       slideDiv.appendChild(img);
       slidesContainer.appendChild(slideDiv);
     });
-    createDots();
     updateGallery();
   }
   
@@ -827,22 +811,6 @@
     const slides = document.querySelectorAll('.slide');
     if(!slides.length) return;
     slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    document.querySelectorAll('.dot').forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
-  }
-  
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    for(let i = 0; i < finalImages.length; i++) {
-      const dot = document.createElement('span');
-      dot.classList.add('dot');
-      if(i === currentIndex) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateGallery();
-        resetAutoSlide();
-      });
-      dotsContainer.appendChild(dot);
-    }
   }
   
   function nextSlide() { currentIndex = (currentIndex + 1) % finalImages.length; updateGallery(); }
@@ -873,21 +841,21 @@
   const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.2 });
   fadeElements.forEach(el => observer.observe(el));
   
-  // FAQ: all closed initially (no active class). Add click to open/close individually
+  // FAQ: only one open at a time, all closed initially
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      // close all others if you want only one open? but per spec "No FAQ should be open unless opened" -> we toggle individually.
+      // Close all FAQ items
+      faqItems.forEach(i => i.classList.remove('active'));
+      // If the clicked one wasn't active, open it
       if (!isActive) {
         item.classList.add('active');
-      } else {
-        item.classList.remove('active');
       }
     });
   });
-  // ensure none are active on load
+  // Ensure all are closed on load
   faqItems.forEach(item => item.classList.remove('active'));
   
   document.getElementById('backToTopBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
