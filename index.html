@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>PF Place | Assisted Living Facility</title>
+  <title>PF Place | Premium Assisted Living Facility</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,63 +13,113 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
-      background: #eef3fc;
-      color: #0a2f44;
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
-      height: 100vh;
+      background: #f8fafc;
+      color: #1a2c3e;
       scroll-behavior: smooth;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
-
-    h1, h2, h3, .logo h1, .faq-question, .btn-primary, .btn-outline-light {
+    h1, h2, h3, .logo h1, .faq-question, .btn-primary, .btn-outline-light, .service-card h3, .footer-logo {
       font-family: 'Playfair Display', serif;
     }
-
-    .page {
-      min-height: 100vh;
-      width: 100%;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.2;
     }
-
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.85;
+    }
+    body, p, li, .contact-line, .footer-col p {
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      line-height: 1.6;
+    }
     .container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 clamp(1rem, 4vw, 3rem);
       width: 100%;
       position: relative;
       z-index: 2;
     }
-
-    /* navbar */
+    section {
+      padding: clamp(3rem, 8vh, 6rem) 0;
+      position: relative;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 2rem;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 40px -16px rgba(0, 0, 0, 0.12);
+    }
+    .btn-primary {
+      background: #ffd966;
+      color: #1e3a4a;
+      padding: 0.85rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #f5c542; transform: translateY(-3px); box-shadow: 0 12px 22px -10px rgba(0,0,0,0.2); }
+    .btn-outline-light {
+      border: 1.5px solid white;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(4px);
+      transition: 0.25s;
+    }
+    .btn-outline-light:hover { background: rgba(122, 179, 200, 0.4); transform: translateY(-2px); border-color: #ffd966; }
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 2000;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(30, 74, 118, 0.15);
-      box-shadow: 0 4px 20px rgba(0, 20, 40, 0.05);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(30, 74, 118, 0.1);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
     }
     .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 0.8rem 40px;
-      max-width: 1360px;
+      padding: 0.8rem clamp(1rem, 4vw, 3rem);
+      max-width: 1400px;
       margin: 0 auto;
     }
     .logo h1 {
-      font-size: 1.9rem;
+      font-size: clamp(1.6rem, 4vw, 2rem);
       font-weight: 800;
       background: linear-gradient(135deg, #0f5b8c, #1b4e7a);
       background-clip: text;
@@ -82,135 +132,157 @@
       font-weight: 500;
       color: #4f7ea3;
       display: block;
-      font-family: 'Inter', sans-serif;
     }
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
       color: #1c5a83;
       transition: 0.2s;
       font-size: 0.95rem;
+      position: relative;
     }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #ffd966;
+      transition: width 0.2s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
     .nav-links a:hover { color: #e9b35f; }
     .hamburger {
       display: none;
       font-size: 1.7rem;
       cursor: pointer;
       color: #1c5a83;
+      transition: 0.2s;
     }
-
-    /* HOME */
+    .hamburger:hover { color: #ffd966; }
+    @media (max-width: 950px) {
+      .nav-links {
+        position: fixed;
+        top: 72px;
+        left: -100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        width: 280px;
+        height: calc(100vh - 72px);
+        flex-direction: column;
+        padding: 2rem 1.8rem;
+        gap: 1.5rem;
+        transition: left 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        box-shadow: 4px 0 30px rgba(0, 0, 0, 0.08);
+        border-right: 1px solid rgba(0,0,0,0.05);
+        z-index: 2100;
+      }
+      .nav-links.active { left: 0; }
+      .nav-links a { font-size: 1.2rem; padding: 0.5rem 0; display: block; }
+      .hamburger { display: block; }
+    }
+    /* HOME section */
     .page-home {
-      background: linear-gradient(0deg, rgba(10, 50, 85, 0.45), rgba(0, 30, 55, 0.4));
-      background-size: cover;
-      background-position: center 35%;
       color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
     }
     .home-bg-img {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.55);
+      z-index: -1;
     }
     .home-content {
-      max-width: 800px;
-      background: rgba(0, 35, 55, 0.5);
-      backdrop-filter: blur(1px);
+      max-width: 780px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
       border-radius: 2rem;
-      padding: 2.5rem;
-      border-left: 4px solid #7ab3c8;
+      padding: clamp(2rem, 5vw, 3rem);
+      border-left: 4px solid #ffd966;
       position: relative;
       z-index: 2;
     }
-    .home-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
-    .home-content p { font-size: 1.1rem; margin-bottom: 1.2rem; line-height: 1.6; }
-    .btn-group { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1.5rem 0 1rem; }
-    .btn-primary {
-      background: #7ab3c8;
-      color: #0a2f44;
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.25s;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .btn-primary:hover { background: #ffd966; color: #1e3a4a; transform: translateY(-3px); }
-    .btn-outline-light {
-      border: 1.5px solid white;
-      background: transparent;
-      color: white;
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-outline-light:hover { background: rgba(122, 179, 200, 0.3); transform: translateY(-2px); }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.8rem 0 1.2rem; }
     .why-badge {
-      margin-top: 1rem;
-      background: rgba(0, 45, 70, 0.6);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
       border-radius: 60px;
-      padding: 0.7rem 1.8rem;
-      display: inline-block;       
+      padding: 0.6rem 1.5rem;
+      display: inline-block;
+      font-size: 0.9rem;
     }
-
-    /* OUR STORY - with slideshow (enlarged image area) */
-    .page-story {
-      position: relative;
-      background: linear-gradient(125deg, #0a4c73, #0b3b5e);
+    /* SERVICES section */
+    .page-services {
       color: white;
+      position: relative;
       overflow: hidden;
-      z-index: 1;
-      padding: 4rem 0;
     }
-    .story-bubble-bg {
-      position: absolute;
+    .services-bg-img {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
-      overflow: hidden;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .page-services::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
       pointer-events: none;
     }
-    .story-bubble {
-      position: absolute;
-      bottom: -80px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 50%;
-      animation: storyRise 14s infinite ease-in;
-      pointer-events: none;
-      backdrop-filter: blur(3px);
+    .page-services .container { position: relative; z-index: 2; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin: 2rem 0; }
+    .service-card {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      border-radius: 1.8rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 217, 102, 0.3);
     }
-    @keyframes storyRise {
-      0% { transform: translateY(0) scale(0.6); opacity: 0.3; }
-      50% { opacity: 0.6; }
-      100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+    .service-card:hover { transform: translateY(-8px); background: rgba(0, 0, 0, 0.6); border-color: #ffd966; }
+    .service-card i { font-size: 2.5rem; color: #ffd966; margin-bottom: 1rem; }
+    .admission-standalone {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      margin-top: 2rem;
+    }
+    .criteria-list li { background: rgba(0,0,0,0.4); border-radius: 2rem; padding: 0.8rem 1.2rem; margin-bottom: 0.8rem; border-left: 3px solid #ffd966; list-style: none; display: flex; align-items: center; gap: 12px; }
+    .welcome-journey { background: rgba(0,0,0,0.4); border-radius: 1.5rem; padding: 1.5rem; text-align: center; }
+    /* OUR STORY section - single image, no navigation arrows needed */
+    .page-story {
+      background: linear-gradient(125deg, #0a4c73, #0b3b5e);
+      color: white;
     }
     .story-container {
-      position: relative;
-      z-index: 2;
-      max-width: 1300px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(2px);
-      border-radius: 2.5rem;
-      box-shadow: 0 25px 40px -18px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(5px);
+      border-radius: 2rem;
       overflow: hidden;
-      transition: transform 0.3s;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.2);
     }
     .story-inner {
       display: grid;
@@ -218,599 +290,340 @@
       gap: 0;
     }
     .story-text {
-      padding: 3rem 3rem;
-      background: rgba(10, 60, 90, 0.75);
-      backdrop-filter: blur(2px);
+      padding: clamp(2rem, 4vw, 3rem);
+      background: rgba(10, 60, 90, 0.7);
     }
-    .story-text h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #ffd966;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .story-text h2 i { color: #ffd966; font-size: 2rem; }
-    .story-sub {
-      font-size: 1rem;
-      color: #f0e6c5;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.8rem;
-      border-left: 3px solid #ffd966;
-      padding-left: 1rem;
-      font-weight: 500;
-    }
-    .story-text p {
-      line-height: 1.65;
-      margin-bottom: 1.2rem;
-      color: #fef9ef;
-    }
-    .story-highlight { font-weight: 700; color: #ffd966; }
-    .legacy-quote {
-      background: rgba(0, 0, 0, 0.35);
-      padding: 1.2rem 1.8rem;
-      border-radius: 1.5rem;
-      margin-top: 1.5rem;
-      font-style: italic;
-      border-left: 4px solid #ffd966;
-      font-weight: 500;
-      backdrop-filter: blur(2px);
-    }
-    .story-slideshow-area {
-      background: rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      position: relative;
+    .story-text h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: #ffd966; }
+    .legacy-quote { background: rgba(0, 0, 0, 0.3); border-left: 4px solid #ffd966; border-radius: 1rem; padding: 1rem 1.5rem; }
+    .story-slideshow-area { 
+      padding: 2rem; 
+      background: rgba(0,0,0,0.2); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
       min-height: 500px;
     }
-    .story-slideshow {
-      position: relative;
-      width: 100%;
-      border-radius: 2rem;
-      overflow: hidden;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
-      background: #00000030;
-      aspect-ratio: 16 / 9;
-      max-width: 100%;
+    .story-slideshow { 
+      aspect-ratio: 4 / 5; 
+      max-height: 550px; 
+      width: 100%; 
+      border-radius: 1.5rem; 
+      overflow: hidden; 
+      box-shadow: 0 25px 40px -12px black; 
+      position: relative; 
+      background: #1e2a36;
     }
-    .story-slides-container {
-      display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 0.95, 0.45, 1);
-      height: 100%;
-    }
-    .story-slide {
-      flex: 0 0 100%;
-      height: 100%;
-    }
-    .story-slide img {
+    .story-static-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #1a2c3a;
       display: block;
-      border-radius: 1.5rem;
-      border: 2px solid rgba(255,217,102,0.5);
     }
-    .story-slide-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(10, 60, 90, 0.85);
-      color: white;
-      border: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.3rem;
-      transition: 0.2s;
-      z-index: 10;
-      backdrop-filter: blur(4px);
+    @media (max-width: 850px) { 
+      .story-inner { grid-template-columns: 1fr; }
+      .story-slideshow { max-height: 450px; }
+    }
+    /* ABOUT section - enlarged for portrait images */
+    .page-about { background: #f7fafd; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+    .vision-mission h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); border-left: 5px solid #ffd966; padding-left: 1rem; margin: 1rem 0 0.8rem; color: #1a6091; }
+    .script-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin: 1.8rem 0; }
+    .script-item {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid #e2edf7;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 10px;
     }
-    .story-slide-btn:hover {
-      background: #ffd966;
-      color: #1e3a4a;
-      transform: translateY(-50%) scale(1.05);
-    }
-    .story-prev-btn { left: 16px; }
-    .story-next-btn { right: 16px; }
-    
-    @media (max-width: 850px) {
-      .story-inner { grid-template-columns: 1fr; }
-      .story-text { padding: 2rem; }
-      .story-slideshow-area { padding: 1.5rem; min-height: 380px; }
-      .story-slide-btn { width: 36px; height: 36px; font-size: 1rem; }
-    }
-
-    /* ABOUT - TikTok style portrait - NO DOTS */
-    .page-about { 
-      background: #f7fafd; 
-      padding: 3rem 0; 
-      min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-    }
-    .about-grid { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 5rem; 
-      align-items: center; 
-    }
-    .about-gallery-container {
-      position: relative;
+    .script-item:hover { transform: translateX(6px); background: #fff6e5; border-color: #ffd966; }
+    .about-gallery-container { 
+      aspect-ratio: 4 / 5; 
+      max-width: 400px; 
       width: 100%;
-      border-radius: 2rem;
-      overflow: hidden;
-      box-shadow: 0 25px 35px -15px rgba(0, 45, 75, 0.25);
-      background: #fff;
-      aspect-ratio: 9 / 16;
-      max-width: 380px;
-      margin: 0 auto;
+      margin: 0 auto; 
+      border-radius: 2rem; 
+      overflow: hidden; 
+      box-shadow: 0 25px 35px -15px rgba(0,0,0,0.2); 
+      background: #fff; 
+      position: relative; 
     }
-    .about-slides {
-      display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 0.95, 0.45, 1);
-      height: 100%;
-    }
-    .about-slide {
-      flex: 0 0 100%;
-      height: 100%;
-    }
-    .about-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .about-slides { display: flex; transition: transform 0.5s ease; height: 100%; }
+    .about-slide { flex: 0 0 100%; height: 100%; }
+    .about-slide img { width: 100%; height: 100%; object-fit: cover; }
     .about-gallery-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(10, 60, 90, 0.75);
-      color: white;
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: 0.2s;
-      z-index: 10;
-      backdrop-filter: blur(4px);
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.5); border: none; border-radius: 50%;
+      width: 34px; height: 34px; color: white; cursor: pointer;
+      transition: 0.2s; backdrop-filter: blur(4px);
     }
-    .about-gallery-btn:hover {
-      background: #ffd966;
-      color: #1e3a4a;
-    }
+    .about-gallery-btn:hover { background: #ffd966; color: #1e3a4a; }
     .about-prev { left: 12px; }
     .about-next { right: 12px; }
-    .about-dots { display: none; }
-    
-    .vision-mission h2 { 
-      font-size: 2.5rem; 
-      font-weight: 800; 
-      color: #1a6091; 
-      margin-bottom: 1.2rem;
-      border-left: 6px solid #ffb347;
-      padding-left: 1.2rem;
-    }
-    .vision-mission p { 
-      color: #1c4c6e; 
-      line-height: 1.7; 
-      margin-bottom: 1.5rem; 
-      font-size: 1.1rem; 
-    }
-    .script-list { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-      gap: 1.5rem; 
-      margin: 2rem 0; 
-    }
-    .script-item {
-      background: #e7f0fa; 
-      border-radius: 3rem; 
-      padding: 1.2rem 1.5rem; 
-      border: 1px solid #bfd9ef;
-      font-weight: 700; 
-      display: flex; 
-      align-items: center; 
-      gap: 1rem; 
-      transition: all 0.2s; 
-      color: #1a4a6e; 
-      font-size: 1.1rem;
-    }
-    .script-item:hover { background: #d5e8fa; transform: translateX(8px); }
-    .script-item i { color: #ffb347; font-size: 1.4rem; width: 1.8rem; }
-    .mission-footer {
-      background: linear-gradient(95deg, #e0effa, #ffffff);
-      padding: 1.5rem;
-      border-radius: 1.5rem;
-      margin-top: 1.5rem;
-      font-size: 1.05rem;
-      border-left: 4px solid #1a6091;
-    }
-    @media (max-width: 900px) { 
-      .about-grid { gap: 2rem; grid-template-columns: 1fr; } 
-      .vision-mission h2 { font-size: 2rem; }
-      .about-gallery-container { max-width: 320px; }
-    }
-
-    /* SERVICES */
-    .page-services {
-      background: linear-gradient(rgba(10, 55, 85, 0.65), rgba(4, 35, 55, 0.6));
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 4rem 0;
-      position: relative;
-    }
-    .services-bg-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(0.5);
-    }
-    .services-header, .services-grid, .admission-standalone { position: relative; z-index: 2; }
-    .services-header { text-align: center; margin-bottom: 3rem; }
-    .services-header h2 { font-size: 2.8rem; font-weight: 800; color: #ffd966; margin-bottom: 0.5rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
-    .services-header p { color: #f0f8ff; font-size: 1.1rem; text-shadow: 0 1px 1px rgba(0,0,0,0.1);}
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
-    .service-card {
-      background: rgba(20, 75, 105, 0.8); backdrop-filter: blur(4px);
-      border-radius: 2rem; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease; border: 1px solid #ffd96640;
-    }
-    .service-card:hover { transform: translateY(-10px); background: #2d7197; }
-    .service-card i { font-size: 2.5rem; color: #ffd966; margin-bottom: 1.2rem; }
-    .service-card h3 { color: white; margin-bottom: 0.5rem; font-size: 1.4rem; }
-    .service-card p { color: #e2edf8; line-height: 1.5; }
-
-    /* ADMISSION */
-    .admission-standalone {
-      margin: 2rem 0 1rem;
-      background: linear-gradient(125deg, #166a97cc, #0d4d72cc);
-      backdrop-filter: blur(2px);
-      border-radius: 2rem;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.3);
-      transition: transform 0.25s ease, box-shadow 0.3s;
-      border: 1px solid rgba(255, 217, 102, 0.4);
-    }
-    .admission-standalone:hover { transform: scale(1.01); box-shadow: 0 25px 40px -12px black; }
-    .admission-standalone h3 {
-      font-size: 2rem; font-weight: 800; color: #ffd966; margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.75rem; border-left: 5px solid #ffd966; padding-left: 1.2rem;
-    }
-    .admission-flex { display: flex; flex-wrap: wrap; gap: 2rem; align-items: stretch; justify-content: space-between; }
-    .criteria-column {
-      flex: 2; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(2px);
-      border-radius: 1.8rem; padding: 1.5rem;
-    }
-    .criteria-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .criteria-list li {
-      background: rgba(0, 0, 0, 0.35); border-radius: 3rem; padding: 0.9rem 1.5rem;
-      display: flex; align-items: center; gap: 1rem; font-weight: 500; font-size: 1rem; border-left: 3px solid #ffd966;
-    }
-    .criteria-list li i { color: #ffd966; font-size: 1.25rem; width: 1.8rem; }
-    .welcome-journey {
-      flex: 1.2; background: rgba(0, 0, 0, 0.35); border-radius: 1.8rem; padding: 1.8rem;
-      text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(2px);
-    }
-    .welcome-journey i { font-size: 2.8rem; color: #ffd966; margin-bottom: 1rem; }
-    .welcome-journey p { font-size: 1.1rem; line-height: 1.5; font-style: italic; margin-bottom: 0.5rem; }
-    .welcome-journey strong { color: #ffd966; font-weight: 700; }
-    @media (max-width: 780px) { .admission-flex { flex-direction: column; } }
-
-    /* MAIN GALLERY - YouTube thumbnail size (16:9) */
-    .page-gallery { background: #eef4fa; padding: 3rem 0; }
-    .gallery-title { text-align: center; font-size: 2.5rem; color: #136b9c; margin-bottom: 2rem; font-weight: 800; }
     .gallery-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.5rem;
-      box-shadow: 0 30px 40px -20px rgba(0, 35, 60, 0.25);
-      background: #f0f6fe;
       aspect-ratio: 16 / 9;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: 1.8rem;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+      position: relative;
     }
-    .slides { display: flex; transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1); height: 100%; }
+    .slides { display: flex; transition: transform 0.5s ease; height: 100%; }
     .slide { flex: 0 0 100%; height: 100%; }
-    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; }
     .gallery-btn {
-      position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 65, 95, 0.75);
-      color: white; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.4rem;
-      transition: 0.2s; z-index: 10; display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0, 65, 95, 0.8); color: white; border: none;
+      width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+      font-size: 1.4rem; transition: 0.2s; backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
     }
     .gallery-btn:hover { background: #ffd966; color: #1a3a4a; }
     .prev { left: 16px; }
     .next { right: 16px; }
-    @media (max-width: 768px) {
-      .gallery-btn { width: 36px; height: 36px; font-size: 1rem; }
-      .prev { left: 10px; }
-      .next { right: 10px; }
-    }
-
-    /* FAQ - MASSIVELY ENLARGED YouTube style 16:9 (BIG & BOLD) */
-    .page-faq {
-      position: relative;
-      background: linear-gradient(125deg, #1a6d9c, #0e4b6e);
-      color: #ffffff;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .faq-bg-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      opacity: 0.15;
-    }
-    .bubble-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .bubble {
-      position: absolute;
-      bottom: -80px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      animation: rise 12s infinite ease-in;
-      pointer-events: none;
-      backdrop-filter: blur(2px);
-    }
-    @keyframes rise {
-      0% { transform: translateY(0) scale(0.8); opacity: 0.4; }
-      100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
-    }
+    .page-faq { background: linear-gradient(125deg, #1a6d9c, #0e4b6e); color: white; }
     .faq-container {
-      position: relative;
-      z-index: 2;
-      max-width: 1300px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      align-items: center;
+      align-items: start;
     }
     .faq-title {
-      font-size: 2.8rem;
-      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
       color: #ffd966;
-      margin-bottom: 2rem;
       grid-column: span 2;
-      position: relative;
+      margin-bottom: 1rem;
     }
-    .faq-title:after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 0;
-      width: 100px;
-      height: 4px;
-      background: #ffd966;
-      border-radius: 4px;
+    .faq-title::after { content: ''; display: block; width: 80px; height: 4px; background: #ffd966; margin-top: 0.5rem; border-radius: 4px; }
+    .faq-item {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 1.2rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
     }
-    .faq-accordion { grid-column: 1; }
-    .faq-side-image { 
-      grid-column: 2; 
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    /* ENORMOUS YouTube-style image: 16:9, large, commanding presence */
+    .faq-question { padding: 1.1rem 1.6rem; font-weight: 700; color: #136b9c; cursor: pointer; background: white; transition: 0.2s; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { background: #fff3e0; }
+    .faq-answer { max-height: 0; padding: 0 1.6rem; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; background: #fefef7; color: #1e5a7a; }
+    .faq-item.active .faq-answer { max-height: 200px; padding: 0 1.6rem 1.2rem 1.6rem; }
     .faq-side-image img {
       width: 100%;
-      max-width: 560px;
-      min-width: 320px;
       aspect-ratio: 16 / 9;
       object-fit: cover;
       border-radius: 1.8rem;
-      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.5);
-      border: 3px solid rgba(255, 217, 102, 0.7);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.4);
+      border: 3px solid rgba(255,217,102,0.7);
+      transition: transform 0.25s;
     }
-    .faq-side-image img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 35px 50px -18px rgba(0, 0, 0, 0.6);
-      border-color: #ffd966;
+    @media (max-width: 850px) {
+      .faq-container { grid-template-columns: 1fr; }
+      .faq-title { grid-column: span 1; text-align: center; }
+      .faq-title::after { margin: 0.5rem auto 0; }
+      .about-gallery-container { max-width: 320px; }
     }
-    .faq-item {
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 1.5rem;
-      margin-bottom: 1.2rem;
-      overflow: hidden;
-      transition: 0.2s;
-    }
-    .faq-question {
-      padding: 1.3rem 2rem;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: #136b9c;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-    }
-    .faq-question i { color: #ffb84d; transition: 0.2s; }
-    .faq-answer {
-      max-height: 0;
-      padding: 0 2rem;
-      color: #1e5a7a;
-      line-height: 1.6;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-      background: #fefef7;
-    }
-    .faq-item.active .faq-answer {
-      max-height: 250px;
-      padding: 0 2rem 1.5rem 2rem;
-    }
-
-    /* CONTACT */
-    .page-contact {
-      background: linear-gradient(0deg, rgba(225, 241, 255, 0.85), rgba(200, 225, 250, 0.85));
-      background-size: cover;
-      padding: 3rem 0;
-      position: relative;
-    }
-    .contact-bg-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      opacity: 0.3;
-    }
-    .contact-wrapper, .cta-card { position: relative; z-index: 2; }
-    .contact-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: stretch;
-    }
+    .page-contact { background: linear-gradient(0deg, rgba(225, 241, 255, 0.9), rgba(200, 225, 250, 0.9)); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: stretch; }
     .contact-details {
-      background: rgba(255, 255, 255, 0.96);
+      background: white;
       border-radius: 2rem;
       padding: 2rem;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-      border-left: 5px solid #7ab3c8;
-      color: #0f4468;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      border-left: 4px solid #ffd966;
     }
-    .contact-details h3 { color: #136b9c; margin-bottom: 1rem; font-size: 1.8rem; }
-    .contact-line { display: flex; align-items: center; gap: 1rem; margin: 1rem 0; }
-    .contact-line i { color: #7ab3c8; width: 1.8rem; font-size: 1.2rem; }
+    .contact-line { display: flex; align-items: center; gap: 12px; margin: 1rem 0; }
+    .contact-line i { width: 28px; color: #ffd966; font-size: 1.2rem; }
     .map-container {
-      background: #fff;
       border-radius: 2rem;
       overflow: hidden;
       min-height: 380px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      background: #e9ecef;
     }
     .map-container iframe {
       width: 100%;
       height: 100%;
       min-height: 380px;
       border: 0;
+      display: block;
     }
     .cta-card {
-      margin-top: 2rem;
       background: #1d6f9e;
       border-radius: 2rem;
-      padding: 2rem 2.5rem;
+      padding: 2rem;
       text-align: center;
       color: white;
-      grid-column: span 2;
-      transition: 0.2s;
+      margin-top: 2rem;
+      transition: 0.25s;
     }
-    .cta-card i { font-size: 2.5rem; margin-bottom: 0.8rem; display: inline-block; }
-    .cta-card h3 { font-size: 1.8rem; margin-bottom: 0.8rem; color: #ffd966; }
-    .cta-card p { max-width: 500px; margin: 0 auto 1.2rem auto; line-height: 1.5; }
-    .cta-card .btn-primary { background: #ffd966; color: #1a3a4a; margin-top: 0.5rem; display: inline-flex; }
-
-    /* FOOTER */
+    .cta-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2); }
+    @media (max-width: 780px) { .contact-wrapper { grid-template-columns: 1fr; } }
     .main-footer {
-      background: #0a3b55;
-      padding: 2.5rem 0 1.5rem;
-      color: #d4eaf5;
+      background: #0a2f3f;
+      position: relative;
+      overflow: hidden;
+    }
+    .main-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ffd966, #7ab3c8, #ffd966);
+    }
+    .footer-wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 48px;
+    }
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem 0 2rem;
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
-    .footer-col h4 { color: #ffd966; margin-bottom: 1.2rem; font-size: 1.2rem; }
-    .footer-col a { color: #cbe5f5; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: 0.2s; }
-    .footer-col a:hover { color: #ffd966; }
-    .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
-    .social-links a {
-      background: #2d6b8a; width: 38px; height: 38px; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      transition: 0.2s; color: white;
+    .footer-brand .footer-logo {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffd966, #ffe0a3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
     }
-    .social-links a:hover { background: #ffd966; color: #0a2f44; }
-    .copyright {
-      text-align: center;
-      border-top: 1px solid #3a6a7f;
-      padding-top: 1.5rem;
-      font-size: 0.85rem;
-      color: #cbe5f5;
+    .footer-brand p {
+      color: #b8d4e8;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      max-width: 280px;
     }
-    .bluelink-credit { margin-top: 1rem; font-size: 0.8rem; opacity: 0.9; letter-spacing: 0.3px; }
-    .bluelink-credit a { color: #ffd966; text-decoration: none; font-weight: 600; border-bottom: 1px dotted #ffd966; }
-    .bluelink-credit a:hover { color: white; border-bottom-color: white; }
-
-    .floating-buttons {
-      position: fixed;
-      bottom: 30px;
-      z-index: 3000;
+    .footer-social {
       display: flex;
-      justify-content: space-between;
-      width: 100%;
-      pointer-events: none;
-      padding: 0 25px;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-    .btn-back-top, .btn-whatsapp {
-      pointer-events: auto;
-      background: #1d6f9e;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
+    .footer-social a {
       display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      color: #ffd966;
       transition: all 0.25s ease;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      border: none;
-      color: white;
-      font-size: 1.8rem;
+      text-decoration: none;
     }
-    .btn-back-top:hover, .btn-whatsapp:hover { transform: translateY(-5px); }
+    .footer-social a:hover {
+      background: #ffd966;
+      color: #1a3a4a;
+      transform: translateY(-3px);
+    }
+    .footer-col h4 {
+      color: #ffd966;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 35px;
+      height: 2px;
+      background: #ffd966;
+      border-radius: 2px;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.7rem;
+    }
+    .footer-col ul li a {
+      color: #c5e0f0;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-col ul li a i { font-size: 0.8rem; color: #ffd966; transition: transform 0.2s; }
+    .footer-col ul li a:hover {
+      color: #ffd966;
+      transform: translateX(4px);
+    }
+    .footer-col ul li a:hover i { transform: translateX(3px); }
+    .footer-contact-info li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+      color: #c5e0f0;
+      font-size: 0.95rem;
+      list-style: none;
+    }
+    .footer-contact-info li i { width: 28px; color: #ffd966; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 217, 102, 0.2);
+      padding-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .copyright { color: #9bc0d4; font-size: 0.85rem; }
+    .footer-credit { color: #9bc0d4; font-size: 0.85rem; }
+    .footer-credit a { color: #ffd966; text-decoration: none; font-weight: 600; transition: 0.2s; }
+    .footer-credit a:hover { color: white; text-decoration: underline; }
+    @media (max-width: 768px) {
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-grid { gap: 2rem; }
+    }
+    .floating-buttons {
+      position: fixed; bottom: 25px; z-index: 3000; display: flex; justify-content: space-between;
+      width: calc(100% - 2rem); pointer-events: none; left: 1rem; right: 1rem;
+    }
+    .btn-back-top, .btn-whatsapp {
+      pointer-events: auto; width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15); cursor: pointer; border: none;
+      font-size: 1.8rem; color: white;
+      text-decoration: none;
+    }
+    .btn-back-top { background: #1d6f9e; }
     .btn-whatsapp { background: #25D366; }
-
-    .fade-up { opacity: 0; transform: translateY(35px); transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease; }
+    .btn-back-top:hover, .btn-whatsapp:hover { transform: translateY(-5px) scale(1.02); }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    
-    @media (max-width: 950px) {
-      .faq-container { grid-template-columns: 1fr; gap: 2.5rem; }
-      .faq-title { grid-column: span 1; text-align: center; font-size: 2.2rem; }
-      .faq-title:after { left: 50%; transform: translateX(-50%); width: 80px; }
-      .container { padding: 0 24px; }
-      .nav-links {
-        position: fixed; top: 70px; left: -100%; background: white; width: 75%;
-        height: calc(100vh - 70px); flex-direction: column; padding: 2rem; gap: 1.8rem;
-        transition: 0.3s; box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-      }
-      .nav-links.active { left: 0; }
-      .hamburger { display: block; }
-      .contact-wrapper { grid-template-columns: 1fr; }
-      .cta-card { grid-column: span 1; }
-      .faq-side-image img { max-width: 100%; min-width: auto; }
+    @media (max-width: 640px) {
+      .gallery-btn { width: 36px; height: 36px; font-size: 1rem; }
+      .about-gallery-btn { width: 30px; height: 30px; }
     }
-    .flex-center { display: flex; flex-direction: column; justify-content: center; min-height: calc(100vh - 80px); }
   </style>
 </head>
 <body>
@@ -822,91 +635,175 @@
       <li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#story">Our Story</a></li>
       <li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#faq">FAQs</a></li><li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></div>
   </div>
 </nav>
 
-<!-- HOME -->
+<!-- HOME section -->
 <section id="home" class="page page-home">
-  <img class="home-bg-img" id="homeBgImg" alt="Background" src="Images/20.png">
-  <div class="container flex-center"><div class="home-content fade-up"><h1>PF Place Assisted Living Facility</h1><p>Compassionate care, dignified living — where every day feels like home.</p><div class="btn-group"><a href="#contact" class="btn-primary"><i class="fas fa-phone-alt"></i> Contact Us</a><a href="#story" class="btn-outline-light"><i class="fas fa-heart"></i> Our Legacy</a></div><div class="why-badge"><i class="fas fa-star-of-life"></i> Safety · Respect · Integrity · Passion</div></div></div>
+  <img class="home-bg-img" id="homeBgImg" alt="Comfortable living space" src="https://ik.imagekit.io/bluelinksolutions/Images/10.png?updatedAt=1777148089817">
+  <div class="container"><div class="home-content fade-up"><h1 class="hero-title">PF Place Assisted Living Facility</h1><p>Compassionate care, dignified living — where every day feels like home.</p><div class="btn-group"><a href="#contact" class="btn-primary"><i class="fas fa-phone-alt"></i> Contact Us</a><a href="#story" class="btn-outline-light"><i class="fas fa-heart"></i> Our Legacy</a></div><div class="why-badge"><i class="fas fa-star-of-life"></i> Safety · Respect · Integrity · Passion</div></div></div>
 </section>
 
-<!-- ABOUT US (no dots) -->
-<section id="about" class="page page-about"><div class="container"><div class="about-grid fade-up"><div class="vision-mission"><h2>Our Vision</h2><p>We strive to be the most preferred assisted living facility, setting the standard for excellence in compassionate, resident-centered care.</p><h2>Our Mission</h2><p>As we provide dignified services to our residents, we are guided by our <strong>S.C.R.I.P.T.</strong> values — the foundation of everything we do.</p><div class="script-list"><div class="script-item"><i class="fas fa-shield-alt"></i> Safety</div><div class="script-item"><i class="fas fa-users"></i> Clients</div><div class="script-item"><i class="fas fa-hand-sparkles"></i> Respect</div><div class="script-item"><i class="fas fa-gem"></i> Integrity</div><div class="script-item"><i class="fas fa-fire"></i> Passion</div><div class="script-item"><i class="fas fa-handshake"></i> Trust</div></div><div class="mission-footer"><i class="fas fa-quote-left" style="margin-right: 8px; color:#ffb347;"></i> Safety first, client-centered, respect, integrity, passion to serve, trust as a team. Every resident deserves a home where they are valued, heard, and cared for with unwavering dedication.</div></div><div class="about-gallery-container"><div class="about-slides" id="aboutSlides"></div><button class="about-gallery-btn about-prev" id="aboutPrevBtn"><i class="fas fa-chevron-left"></i></button><button class="about-gallery-btn about-next" id="aboutNextBtn"><i class="fas fa-chevron-right"></i></button><div class="about-dots"></div></div></div></div></section>
+<!-- ABOUT -->
+<section id="about" class="page page-about"><div class="container"><div class="about-grid fade-up"><div class="vision-mission"><h2>Our Vision</h2><p>We strive to be the most preferred assisted living facility, setting the standard for excellence in compassionate, resident-centered care.</p><h2>Our Mission</h2><p>As we provide dignified services to our residents, we are guided by our <strong>S.C.R.I.P.T.</strong> values — the foundation of everything we do.</p><div class="script-list"><div class="script-item"><i class="fas fa-shield-alt"></i> Safety</div><div class="script-item"><i class="fas fa-users"></i> Clients</div><div class="script-item"><i class="fas fa-hand-sparkles"></i> Respect</div><div class="script-item"><i class="fas fa-gem"></i> Integrity</div><div class="script-item"><i class="fas fa-fire"></i> Passion</div><div class="script-item"><i class="fas fa-handshake"></i> Trust</div></div><div class="mission-footer glass-card" style="background: #e7f0fa; padding:1.2rem;"><i class="fas fa-quote-left" style="margin-right: 8px; color:#ffb347;"></i> Safety first, client-centered, respect, integrity, passion to serve, trust as a team. Every resident deserves a home where they are valued.</div></div><div class="about-gallery-container"><div class="about-slides" id="aboutSlides"></div><button class="about-gallery-btn about-prev" id="aboutPrevBtn"><i class="fas fa-chevron-left"></i></button><button class="about-gallery-btn about-next" id="aboutNextBtn"><i class="fas fa-chevron-right"></i></button></div></div></div></section>
 
-<!-- OUR STORY WITH SLIDESHOW -->
-<section id="story" class="page page-story"><div class="story-bubble-bg" id="storyBubbleContainer"></div><div class="container"><div class="story-container fade-up"><div class="story-inner"><div class="story-text"><h2><i class="fas fa-leaf"></i> Our Story</h2><div class="story-sub">Honoring the legacy of Peter Festus (1943–2018)</div><p><span class="story-highlight">PF Place</span> is a community-centered care facility created in loving memory of <strong>Peter Festus (PF)</strong>. His life was dedicated to serving others through the church and supporting the elderly as well as individuals with mental and physical challenges.</p><p>Inspired by his compassion and commitment to helping people, <strong>PF Place</strong> was established to continue his legacy of care, dignity, and community support. Our mission is to provide a welcoming, supportive, and comfortable environment for individuals who need compassionate care.</p><p><i class="fas fa-map-marker-alt" style="color:#ffd966;"></i> Conveniently located at <strong>537 Old Point Avenue, Hampton, VA 23663</strong>, PF Place serves residents and families with dedication.</p><div class="legacy-quote"><i class="fas fa-quote-left" style="margin-right: 8px; color:#ffd966;"></i> Continuing a legacy of love — one resident at a time. We honor Peter Festus by transforming compassion into action every single day.</div></div><div class="story-slideshow-area"><div class="story-slideshow"><div class="story-slides-container" id="storySlidesContainer"></div><button class="story-slide-btn story-prev-btn" id="storyPrevBtn"><i class="fas fa-chevron-left"></i></button><button class="story-slide-btn story-next-btn" id="storyNextBtn"><i class="fas fa-chevron-right"></i></button></div></div></div></div></div></section>
+<!-- OUR STORY - Single image only, no slideshow or navigation -->
+<section id="story" class="page page-story"><div class="container"><div class="story-container fade-up"><div class="story-inner"><div class="story-text"><h2><i class="fas fa-leaf"></i> Our Story</h2><div class="story-sub" style="color:#ffd966;">Honoring the legacy of Peter Festus (1943–2018)</div><p><span style="color:#ffd966; font-weight:bold;">PF Place</span> is a community-centered care facility created in loving memory of <strong>Peter Festus (PF)</strong>. His life was dedicated to serving others through the church and supporting the elderly as well as individuals with mental and physical challenges.</p><p>Inspired by his compassion and commitment, <strong>PF Place</strong> continues his legacy of care, dignity, and community support. Conveniently located at <strong>537 Old Point Avenue, Hampton, VA 23663</strong>.</p><div class="legacy-quote"><i class="fas fa-quote-left" style="margin-right: 8px; color:#ffd966;"></i> Continuing a legacy of love — one resident at a time.</div></div><div class="story-slideshow-area"><div class="story-slideshow"><img class="story-static-image" src="https://ik.imagekit.io/bluelinksolutions/Images/d.jpeg?updatedAt=1777148026949" alt="Legacy memorial image"></div></div></div></div></div></section>
 
 <!-- SERVICES -->
-<section id="services" class="page page-services"><img class="services-bg-img" id="servicesBgImg" alt="Services Background"><div class="container flex-center" style="padding-top: 3rem; padding-bottom: 3rem;"><div class="services-header fade-up"><h2>Our Services</h2><p>Holistic support — body, mind & spirit</p></div><div class="services-grid fade-up"><div class="service-card"><i class="fas fa-car-side"></i><h3>Transportation</h3><p>Medical appointments & outings</p></div><div class="service-card"><i class="fas fa-pills"></i><h3>Medication Management</h3><p>Safe, timely administration</p></div><div class="service-card"><i class="fas fa-apple-alt"></i><h3>Nutrition</h3><p>Chef-prepared balanced meals</p></div><div class="service-card"><i class="fas fa-dumbbell"></i><h3>Fitness</h3><p>Gentle exercise & mobility</p></div><div class="service-card"><i class="fas fa-palette"></i><h3>Recreation</h3><p>Activities & social events</p></div><div class="service-card"><i class="fas fa-user-friends"></i><h3>Companionship</h3><p>Warm, meaningful connection</p></div><div class="service-card"><i class="fas fa-heartbeat"></i><h3>Emotional Support</h3><p>Counseling & empathic care</p></div></div><div class="admission-standalone fade-up"><h3><i class="fas fa-clipboard-list"></i> Admission & Eligibility Criteria</h3><div class="admission-flex"><div class="criteria-column"><ul class="criteria-list"><li><i class="fas fa-user-check"></i> Residents must be at least 18 years of age</li><li><i class="fas fa-hands-helping"></i> Must have a need for assisted living</li><li><i class="fas fa-chalkboard-user"></i> Able to receive support from trained staff</li><li><i class="fas fa-file-invoice-dollar"></i> Meet financial requirements & complete documentation</li></ul></div><div class="welcome-journey"><i class="fas fa-hand-holding-heart"></i><p>We welcome all who seek a supportive, respectful home environment.</p><p><strong>✨ Your journey to compassionate care starts here. ✨</strong></p></div></div></div></div></section>
+<section id="services" class="page page-services">
+  <img class="services-bg-img" id="servicesBgImg" alt="Services background" src="https://ik.imagekit.io/bluelinksolutions/Images/13.png?updatedAt=1777148088557">
+  <div class="container">
+    <div class="services-header fade-up"><h2 class="section-title">Our Services</h2><p class="section-subtitle">Holistic support — body, mind & spirit</p></div>
+    <div class="services-grid fade-up">
+      <div class="service-card"><i class="fas fa-car-side"></i><h3>Transportation</h3><p>Medical appointments & outings</p></div>
+      <div class="service-card"><i class="fas fa-pills"></i><h3>Medication Management</h3><p>Safe, timely administration</p></div>
+      <div class="service-card"><i class="fas fa-apple-alt"></i><h3>Nutrition</h3><p>Chef-prepared balanced meals</p></div>
+      <div class="service-card"><i class="fas fa-dumbbell"></i><h3>Fitness</h3><p>Gentle exercise & mobility</p></div>
+      <div class="service-card"><i class="fas fa-palette"></i><h3>Recreation</h3><p>Activities & social events</p></div>
+      <div class="service-card"><i class="fas fa-user-friends"></i><h3>Companionship</h3><p>Warm, meaningful connection</p></div>
+      <div class="service-card"><i class="fas fa-heartbeat"></i><h3>Emotional Support</h3><p>Counseling & empathic care</p></div>
+    </div>
+    <div class="admission-standalone fade-up"><h3><i class="fas fa-clipboard-list"></i> Admission & Eligibility Criteria</h3><div class="admission-flex" style="display:flex; flex-wrap:wrap; gap:2rem;"><div class="criteria-column" style="flex:2;"><ul class="criteria-list"><li><i class="fas fa-user-check"></i> Residents must be at least 18 years of age</li><li><i class="fas fa-hands-helping"></i> Must have a need for assisted living</li><li><i class="fas fa-chalkboard-user"></i> Able to receive support from trained staff</li><li><i class="fas fa-file-invoice-dollar"></i> Meet financial requirements & complete documentation</li></ul></div><div class="welcome-journey"><i class="fas fa-hand-holding-heart" style="font-size:2rem; color:#ffd966;"></i><p style="margin-top:0.5rem;">We welcome all who seek a supportive, respectful home environment.</p><p><strong>✨ Your journey to compassionate care starts here. ✨</strong></p></div></div></div>
+  </div>
+</section>
 
-<!-- MAIN GALLERY -->
-<section id="gallery" class="page page-gallery"><div class="container"><h2 class="gallery-title fade-up">Our Living & Care Gallery</h2><div class="gallery-container fade-up"><div class="slides" id="slides"></div><button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button><button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button></div></div></section>
+<!-- GALLERY -->
+<section id="gallery" class="page page-gallery" style="background:#f0f4f9;"><div class="container"><h2 class="section-title fade-up" style="text-align:center; color:#136b9c;">Our Living & Care Gallery</h2><div class="gallery-container fade-up"><div class="slides" id="slides"></div><button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button><button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button></div></div></section>
 
-<!-- FAQ - MASSIVELY ENLARGED YOUTUBE-STYLE IMAGE -->
-<section id="faq" class="page page-faq"><img class="faq-bg-img" id="faqBgImg" alt="FAQ Background"><div class="bubble-bg" id="bubbleContainer"></div><div class="container flex-center"><div class="faq-container fade-up"><h2 class="faq-title">Frequently Asked Questions</h2><div class="faq-accordion"><div class="faq-item"><div class="faq-question">What makes PF Place different? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Our S.C.R.I.P.T. values guide every interaction: Safety, Clients, Respect, Integrity, Passion, Trust. We focus on personalized care and dignified living.</div></div><div class="faq-item"><div class="faq-question">What types of services do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Transportation, medication management, nutrition, fitness, recreation, companionship, emotional support — 24/7 care tailored to individual needs.</div></div><div class="faq-item"><div class="faq-question">What are the admission requirements? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Residents must be 18+, require assisted living support, able to receive help from trained staff, and meet financial/documentation requirements.</div></div><div class="faq-item"><div class="faq-question">Can I schedule a tour? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! Call (804) 514-8117 or email festosplace@gmail.com to arrange a personal tour.</div></div><div class="faq-item"><div class="faq-question">Do you accept Medicare/Medicaid? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">We work with various long‑term care insurance plans and private pay options.</div></div></div><div class="faq-side-image"><img id="faqSideImg" alt="Happy senior resident enjoying care"></div></div></div></section>
+<!-- FAQ -->
+<section id="faq" class="page page-faq"><div class="container"><div class="faq-container fade-up"><h2 class="faq-title">Frequently Asked Questions</h2><div class="faq-accordion"><div class="faq-item"><div class="faq-question">What makes PF Place different? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Our S.C.R.I.P.T. values guide every interaction: Safety, Clients, Respect, Integrity, Passion, Trust. We focus on personalized care and dignified living.</div></div><div class="faq-item"><div class="faq-question">What types of services do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Transportation, medication management, nutrition, fitness, recreation, companionship, emotional support — 24/7 care tailored to individual needs.</div></div><div class="faq-item"><div class="faq-question">What are the admission requirements? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Residents must be 18+, require assisted living support, able to receive help from trained staff, and meet financial/documentation requirements.</div></div><div class="faq-item"><div class="faq-question">Can I schedule a tour? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! Call (804) 514-8117 or email festosplace@gmail.com to arrange a personal tour.</div></div><div class="faq-item"><div class="faq-question">Do you accept Medicare/Medicaid? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">We work with various long‑term care insurance plans and private pay options.</div></div></div><div class="faq-side-image"><img id="faqSideImg" alt="Happy senior resident enjoying care"></div></div></div></section>
 
 <!-- CONTACT -->
-<section id="contact" class="page page-contact"><img class="contact-bg-img" id="contactBgImg" alt="Contact Background"><div class="container flex-center"><div class="fade-up" style="width:100%"><div class="contact-wrapper"><div class="contact-details"><h3><i class="fas fa-map-pin"></i> PF Place Assisted Living</h3><div class="contact-line"><i class="fas fa-map-marker-alt"></i> 537 Old Point Avenue, Hampton, Virginia 23663</div><div class="contact-line"><i class="fas fa-phone-alt"></i> (804) 514-8117 &nbsp;|&nbsp; 747-723-0750</div><div class="contact-line"><i class="fas fa-fax"></i> Fax: 757-722-0148</div><div class="contact-line"><i class="fas fa-envelope"></i> festosplace@gmail.com</div><div class="contact-line"><i class="fas fa-clock"></i> 24/7 Resident Support · Tours by appointment</div><a href="tel:8045148117" class="btn-primary" style="background:#2c7cb6; color:white; margin-top:1.5rem; display:inline-block;"><i class="fas fa-phone"></i> Call Now</a></div><div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.123456789!2d-76.3456789!3d37.0299876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ba9a123456789%3A0xabcdef123456789!2s537%20Old%20Point%20Ave%2C%20Hampton%2C%20VA%2023663!5e0!3m2!1sen!2sus!4v1713214567890" allowfullscreen="" loading="lazy"></iframe></div></div><div class="cta-card"><i class="fas fa-hands-helping"></i><h3>Schedule a Visit</h3><p>Experience the warmth of PF Place. Speak with our administrator or request a personal tour.</p><a href="mailto:festosplace@gmail.com" class="btn-primary"><i class="fas fa-calendar-check"></i> Email us</a></div></div></div></section>
+<section id="contact" class="page page-contact"><div class="container"><div class="fade-up"><div class="contact-wrapper"><div class="contact-details"><h3><i class="fas fa-map-pin"></i> PF Place Assisted Living</h3><div class="contact-line"><i class="fas fa-map-marker-alt"></i> 537 Old Point Avenue, Hampton, Virginia 23663</div><div class="contact-line"><i class="fas fa-phone-alt"></i> (804) 514-8117 &nbsp;|&nbsp; 747-723-0750</div><div class="contact-line"><i class="fas fa-fax"></i> Fax: 757-722-0148</div><div class="contact-line"><i class="fas fa-envelope"></i> festosplace@gmail.com</div><div class="contact-line"><i class="fas fa-clock"></i> 24/7 Resident Support · Tours by appointment</div><a href="tel:8045148117" class="btn-primary" style="background:#2c7cb6; color:white; margin-top:1.5rem; display:inline-block;"><i class="fas fa-phone"></i> Call Now</a></div><div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.456789012345!2d-76.3456789!3d37.0299876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ba9a123456789%3A0xabcdef123456789!2s537%20Old%20Point%20Ave%2C%20Hampton%2C%20VA%2023663!5e0!3m2!1sen!2sus!4v1713214567890!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div><div class="cta-card"><i class="fas fa-hands-helping"></i><h3>Schedule a Visit</h3><p>Experience the warmth of PF Place. Speak with our administrator or request a personal tour.</p><a href="mailto:festosplace@gmail.com" class="btn-primary"><i class="fas fa-calendar-check"></i> Email us</a></div></div></div></section>
 
-<footer class="main-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h4>PF PLACE</h4><p>Assisted Living Facility dedicated to dignity, safety, and genuine care.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div><div class="footer-col"><h4>Explore</h4><a href="#home">Home</a><a href="#about">About Us</a><a href="#story">Our Story</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#faq">FAQs</a></div><div class="footer-col"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i> 537 Old Point Ave, Hampton, VA</p><p><i class="fas fa-phone"></i> (804) 514-8117 / 747-723-0750</p><p><i class="fas fa-envelope"></i> festosplace@gmail.com</p></div><div class="footer-col"><h4>Care Hours</h4><p>24/7 Nursing Support<br>Visiting: 9am–7pm<br>Emergency line always open</p></div></div><div class="copyright"><p>© 2025 PF Place Assisted Living Facility. All rights reserved. | Licensed & Certified</p><div class="bluelink-credit">Made and Powered by <a href="https://bluelinksolutions254.github.io/bluelink_solutions_tech/" target="_blank" rel="noopener noreferrer">Bluelink Solutions</a></div></div></div></footer>
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-wave"><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#0a2f3f" opacity="0.9"></path></svg></div>
+  <div class="footer-content"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-logo">PF PLACE</div><p>Assisted Living Facility dedicated to dignity, safety, and genuine care. Continuing a legacy of compassion since 2018.</p><div class="footer-social"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div><div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li><li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li><li><a href="#story"><i class="fas fa-chevron-right"></i> Our Story</a></li><li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li><li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li><li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQs</a></li><li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li></ul></div><div class="footer-col"><h4>Our Services</h4><ul><li><a href="#services"><i class="fas fa-chevron-right"></i> 24/7 Care</a></li><li><a href="#services"><i class="fas fa-chevron-right"></i> Medication Management</a></li><li><a href="#services"><i class="fas fa-chevron-right"></i> Transportation</a></li><li><a href="#services"><i class="fas fa-chevron-right"></i> Nutrition & Dining</a></li><li><a href="#services"><i class="fas fa-chevron-right"></i> Recreation & Social</a></li></ul></div><div class="footer-col"><h4>Contact Info</h4><ul class="footer-contact-info"><li><i class="fas fa-map-marker-alt"></i> 537 Old Point Avenue<br>Hampton, VA 23663</li><li><i class="fas fa-phone-alt"></i> (804) 514-8117<br>(747) 723-0750</li><li><i class="fas fa-envelope"></i> festosplace@gmail.com</li><li><i class="fas fa-clock"></i> 24/7 Support<br>Tours by Appointment</li></ul></div></div><div class="footer-bottom"><div class="copyright"><i class="far fa-copyright"></i> 2025 PF Place Assisted Living Facility. All rights reserved. | Licensed & Certified</div><div class="footer-credit">Made with <i class="fas fa-heart" style="color:#ffd966;"></i> by <a href="https://bluelinksolutions254.github.io/bluelink_solutions_tech/" target="_blank" rel="noopener noreferrer">Bluelink Solutions</a></div></div></div></div>
+</footer>
 
-<div class="floating-buttons"><button class="btn-back-top" id="backToTopBtn"><i class="fas fa-arrow-up"></i></button><a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living." class="btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+<div class="floating-buttons"><button class="btn-back-top" id="backToTopBtn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button><a href="https://wa.me/18045148117?text=Hello%21%20I%27m%20interested%20in%20PF%20Place%20Assisted%20Living." class="btn-whatsapp" target="_blank" aria-label="WhatsApp" style="text-decoration: none;"><i class="fab fa-whatsapp"></i></a></div>
 
 <script>
-  const imageFolder = 'Images/';
-  const letters = 'abcdefgh'.split('');
-  const visionImages = letters.map(letter => `${imageFolder}${letter}.JPEG`);
-  const galleryImages = Array.from({length:20}, (_,i)=>`${imageFolder}${i+1}.png`);
-  const allImages = [...visionImages, ...galleryImages];
+  // Gallery images
+  const galleryImageUrls = [
+    'https://ik.imagekit.io/bluelinksolutions/Images/9.png?updatedAt=1777148084394',
+    'https://ik.imagekit.io/bluelinksolutions/Images/15.png?updatedAt=1777148084553',
+    'https://ik.imagekit.io/bluelinksolutions/Images/6.png?updatedAt=1777148089616',
+    'https://ik.imagekit.io/bluelinksolutions/Images/2.png?updatedAt=1777148088250',
+    'https://ik.imagekit.io/bluelinksolutions/Images/3.png?updatedAt=1777148091078',
+    'https://ik.imagekit.io/bluelinksolutions/Images/13.png?updatedAt=1777148088557',
+    'https://ik.imagekit.io/bluelinksolutions/Images/11.png?updatedAt=1777148090140'
+  ];
   
-  // ABOUT gallery (no dots)
-  const aboutSlides = document.getElementById('aboutSlides');
-  let aboutIndex=0, aboutInterval;
-  function buildAbout(){ aboutSlides.innerHTML=''; visionImages.forEach(src=>{ let div=document.createElement('div'); div.className='about-slide'; let img=document.createElement('img'); img.src=src; div.appendChild(img); aboutSlides.appendChild(div);}); updateAbout(); }
-  function updateAbout(){ aboutSlides.style.transform=`translateX(-${aboutIndex*100}%)`; }
-  function nextAbout(){ aboutIndex=(aboutIndex+1)%visionImages.length; updateAbout(); }
-  function prevAbout(){ aboutIndex=(aboutIndex-1+visionImages.length)%visionImages.length; updateAbout(); }
-  function resetAboutAuto(){ clearInterval(aboutInterval); aboutInterval=setInterval(nextAbout,4500); }
-  buildAbout(); document.getElementById('aboutPrevBtn').onclick=()=>{prevAbout();resetAboutAuto();}; document.getElementById('aboutNextBtn').onclick=()=>{nextAbout();resetAboutAuto();}; aboutInterval=setInterval(nextAbout,4500);
+  // Vision images for About section - portrait images
+  const visionImages = [
+    'https://ik.imagekit.io/bluelinksolutions/Images/d.jpeg?updatedAt=1777148026949',
+    'https://ik.imagekit.io/bluelinksolutions/Images/e.jpeg?updatedAt=1777148033461',
+    'https://ik.imagekit.io/bluelinksolutions/Images/c.jpeg?updatedAt=1777148028423',
+    'https://ik.imagekit.io/bluelinksolutions/Images/b.jpeg?updatedAt=1777148028718'
+  ];
   
-  // STORY slideshow
-  const storyContainer = document.getElementById('storySlidesContainer');
-  let storyIdx=0, storyInterval;
-  function buildStorySlideshow(){ storyContainer.innerHTML=''; galleryImages.forEach(src=>{ let div=document.createElement('div'); div.className='story-slide'; let img=document.createElement('img'); img.src=src; img.alt='Story legacy image'; div.appendChild(img); storyContainer.appendChild(div);}); updateStory(); }
-  function updateStory(){ if(storyContainer) storyContainer.style.transform=`translateX(-${storyIdx*100}%)`; }
-  function nextStory(){ storyIdx=(storyIdx+1)%galleryImages.length; updateStory(); }
-  function prevStory(){ storyIdx=(storyIdx-1+galleryImages.length)%galleryImages.length; updateStory(); }
-  function resetStoryAuto(){ clearInterval(storyInterval); storyInterval=setInterval(nextStory,5000); }
-  buildStorySlideshow(); document.getElementById('storyPrevBtn').onclick=()=>{prevStory();resetStoryAuto();}; document.getElementById('storyNextBtn').onclick=()=>{nextStory();resetStoryAuto();}; storyInterval=setInterval(nextStory,5000);
+  function buildAbout() { 
+    const c = document.getElementById('aboutSlides'); 
+    if(!c) return; 
+    c.innerHTML = ''; 
+    visionImages.forEach(src => { 
+      let div = document.createElement('div'); 
+      div.className = 'about-slide'; 
+      let img = document.createElement('img'); 
+      img.src = src; 
+      img.style.width = '100%'; 
+      img.style.height = '100%'; 
+      img.style.objectFit = 'cover'; 
+      div.appendChild(img); 
+      c.appendChild(div); 
+    }); 
+    let idx = 0; 
+    function update() { c.style.transform = `translateX(-${idx * 100}%)`; } 
+    window.nextAbout = () => { idx = (idx + 1) % visionImages.length; update(); resetTimer(); }; 
+    window.prevAbout = () => { idx = (idx - 1 + visionImages.length) % visionImages.length; update(); resetTimer(); }; 
+    let timer = setInterval(() => window.nextAbout(), 5000); 
+    function resetTimer() { clearInterval(timer); timer = setInterval(() => window.nextAbout(), 5000); } 
+    document.getElementById('aboutPrevBtn')?.addEventListener('click', window.prevAbout); 
+    document.getElementById('aboutNextBtn')?.addEventListener('click', window.nextAbout); 
+    update(); 
+  }
+  buildAbout();
   
-  // Main Gallery
-  const mainSlides=document.getElementById('slides'); let mainIndex=0, mainInterval;
-  function buildMain(){ mainSlides.innerHTML=''; galleryImages.forEach(src=>{let d=document.createElement('div'); d.className='slide'; let i=document.createElement('img'); i.src=src; d.appendChild(i); mainSlides.appendChild(d);}); updateMain();}
-  function updateMain(){ mainSlides.style.transform=`translateX(-${mainIndex*100}%)`; }
-  function nextMain(){ mainIndex=(mainIndex+1)%galleryImages.length; updateMain(); }
-  function prevMain(){ mainIndex=(mainIndex-1+galleryImages.length)%galleryImages.length; updateMain(); }
-  function resetMainAuto(){ clearInterval(mainInterval); mainInterval=setInterval(nextMain,5000); }
-  buildMain(); document.getElementById('prevBtn').onclick=()=>{prevMain();resetMainAuto();}; document.getElementById('nextBtn').onclick=()=>{nextMain();resetMainAuto();}; mainInterval=setInterval(nextMain,5000);
+  function buildMainGallery() { 
+    const s = document.getElementById('slides'); 
+    if(!s) return; 
+    s.innerHTML = ''; 
+    galleryImageUrls.forEach(src => { 
+      let div = document.createElement('div'); 
+      div.className = 'slide'; 
+      let img = document.createElement('img'); 
+      img.src = src; 
+      img.style.width = '100%'; 
+      img.style.height = '100%'; 
+      img.style.objectFit = 'cover'; 
+      div.appendChild(img); 
+      s.appendChild(div); 
+    }); 
+    let idx = 0; 
+    function update() { s.style.transform = `translateX(-${idx * 100}%)`; } 
+    window.nextSlide = () => { idx = (idx + 1) % galleryImageUrls.length; update(); resetTimer(); }; 
+    window.prevSlide = () => { idx = (idx - 1 + galleryImageUrls.length) % galleryImageUrls.length; update(); resetTimer(); }; 
+    let timer = setInterval(() => window.nextSlide(), 5000); 
+    function resetTimer() { clearInterval(timer); timer = setInterval(() => window.nextSlide(), 5000); } 
+    document.getElementById('prevBtn')?.addEventListener('click', window.prevSlide); 
+    document.getElementById('nextBtn')?.addEventListener('click', window.nextSlide); 
+    update(); 
+  }
+  buildMainGallery();
   
-  function setRandomImage(id){ let el=document.getElementById(id); if(el && allImages.length){ let rand=Math.floor(Math.random()*allImages.length); el.src=allImages[rand]; } }
-  setRandomImage('servicesBgImg'); setRandomImage('faqBgImg'); setRandomImage('faqSideImg'); setRandomImage('contactBgImg');
+  document.querySelectorAll('.faq-item').forEach(item => { 
+    item.querySelector('.faq-question')?.addEventListener('click', () => { 
+      let active = item.classList.contains('active'); 
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active')); 
+      if(!active) item.classList.add('active'); 
+    }); 
+  });
   
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item=>{ item.querySelector('.faq-question').addEventListener('click',()=>{ let active=item.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active')); if(!active) item.classList.add('active'); }); });
+  // Random image for FAQ sidebar
+  const allImgs = [...visionImages, ...galleryImageUrls];
+  function setRandomForFaq(id) { 
+    let el = document.getElementById(id); 
+    if(el && allImgs.length) el.src = allImgs[Math.floor(Math.random() * allImgs.length)]; 
+  }
+  setRandomForFaq('faqSideImg');
   
-  // Bubbles
-  function createBubbles(containerId, cls, count=40){ let c=document.getElementById(containerId); if(!c) return; for(let i=0;i<count;i++){ let b=document.createElement('div'); b.classList.add(cls); let s=Math.random()*90+20; b.style.width=`${s}px`; b.style.height=`${s}px`; b.style.left=`${Math.random()*100}%`; b.style.animationDuration=`${Math.random()*12+6}s`; b.style.animationDelay=`${Math.random()*12}s`; c.appendChild(b); } }
-  createBubbles('bubbleContainer','bubble',45); createBubbles('storyBubbleContainer','story-bubble',40);
+  const hamburger = document.getElementById('hamburger'), navLinks = document.getElementById('navLinks');
+  hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks?.classList.remove('active')));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => { 
+    anchor.addEventListener('click', function(e) { 
+      let hash = this.getAttribute('href'); 
+      if(hash === '#') return; 
+      let target = document.querySelector(hash); 
+      if(target) { 
+        e.preventDefault(); 
+        target.scrollIntoView({ behavior: 'smooth' }); 
+        navLinks?.classList.remove('active'); 
+      } 
+    }); 
+  });
   
-  const hamburger=document.getElementById('hamburger'), navLinks=document.getElementById('navLinks');
-  hamburger.onclick=()=>navLinks.classList.toggle('active'); document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('active')));
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',function(e){ let hash=this.getAttribute('href'); if(hash==="#") return; let target=document.querySelector(hash); if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); navLinks.classList.remove('active'); } }); });
-  const fadeElements = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.2 });
-  fadeElements.forEach(el => observer.observe(el));
-  document.getElementById('backToTopBtn').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+  const faders = document.querySelectorAll('.fade-up'); 
+  const obs = new IntersectionObserver(entries => { 
+    entries.forEach(e => { 
+      if(e.isIntersecting) { 
+        e.target.classList.add('visible'); 
+        obs.unobserve(e.target); 
+      } 
+    }); 
+  }, { threshold: 0.15 }); 
+  faders.forEach(el => obs.observe(el));
+  
+  document.getElementById('backToTopBtn')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 </body>
 </html>
